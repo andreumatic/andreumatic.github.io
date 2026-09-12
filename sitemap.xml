@@ -3,4 +3,9 @@
 <url><loc>https://andreumatic.github.io/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
 <url><loc>https://andreumatic.github.io/servicios.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
 <url><loc>https://andreumatic.github.io/precios.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://andreumatic.github.io/aviso-legal.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+<url><loc>https://andreumatic.github.io/privacidad.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+<url><loc>https://andreumatic.github.io/accesibilidad.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+<url><loc>https://andreumatic.github.io/entregas-reclamaciones.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+<url><loc>https://andreumatic.github.io/atencion-cliente.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
 </urlset>
