@@ -185,7 +185,7 @@ footer a:hover{color:var(--amber)}
   .nav{display:none;position:absolute;top:100%;left:0;right:0;background:var(--teal);flex-direction:column;padding:12px;gap:2px;border-bottom:1px solid rgba(255,255,255,.12)}
   .nav.open{display:flex}
   .burger{display:block}
-  /* En móvil el teléfono ya está en la topbar: ocultar duplicado del header */
+  /* En móvil se muestra el icono de llamar para ahorrar espacio */
   .header-cta .btn-ghost{display:none}
   .header-in{padding:10px 14px;gap:8px}
   .brand{font-size:17px;gap:8px}
