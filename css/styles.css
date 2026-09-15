@@ -179,6 +179,12 @@ footer a:hover{color:var(--amber)}
 .svc-badge{margin:0;flex-shrink:0;text-align:center}
 .svc-badge b{font-family:'Space Mono',monospace;font-size:22px;color:var(--teal);display:block;margin-top:10px}
 .svc-badge b span{color:var(--amber-d)}
+/* La cabecera se aprieta en tablet (~1024px): colapsar nav antes para que no se solape la marca */
+@media(max-width:1100px){
+  .nav{display:none;position:absolute;top:100%;left:0;right:0;background:var(--teal);flex-direction:column;padding:12px;gap:2px;border-bottom:1px solid rgba(255,255,255,.12);z-index:200}
+  .nav.open{display:flex}
+  .burger{display:block}
+}
 @media(max-width:900px){
   .hero-grid,.grid2,.grid3,.grid4,.split,.svc,.steps{grid-template-columns:1fr}
   .svc-hero{flex-direction:column;align-items:flex-start;gap:16px}
@@ -214,4 +220,18 @@ footer a:hover{color:var(--amber)}
   .card{padding:18px}
   /* Tablas de precios con scroll horizontal en vez de romper la página */
   .price-table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+}
+
+/* ===== EFECTOS PROVISIONALES fx/efectos (reversible: borrar este bloque + bloque JS) ===== */
+.site-header{transition:box-shadow .25s ease}
+.site-header.scrolled{box-shadow:0 8px 28px rgba(0,0,0,.32)}
+@media (prefers-reduced-motion: no-preference){
+  /* aparición al hacer scroll (el JS añade .reveal y .in) */
+  body.js .reveal{opacity:0;transform:translateY(22px);transition:opacity .55s ease,transform .55s ease,box-shadow .25s ease}
+  body.js .reveal.in{opacity:1;transform:none}
+  /* línea caos→calma del hero que se dibuja sola al cargar */
+  .scope path{stroke-dasharray:640;stroke-dashoffset:640;animation:scope-draw 1.8s ease .35s forwards}
+  @keyframes scope-draw{to{stroke-dashoffset:0}}
+  /* tarjetas que flotan al pasar el ratón (solo tras aparecer) */
+  body.js .block .card.reveal.in:hover,body.js .svc article.reveal.in:hover,body.js .testi.reveal.in:hover,body.js .block .step.reveal.in:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(15,46,41,.16)}
 }
