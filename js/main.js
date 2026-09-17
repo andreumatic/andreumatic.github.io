@@ -1,4 +1,50 @@
 document.getElementById('burger')?.addEventListener('click',()=>document.getElementById('nav')?.classList.toggle('open'));
+/* Mejoras v1.12 (aditivo): huecos de hoy + formulario mailto */
+(function(){
+  var el=document.getElementById('huecos');
+  if(el){
+    var now=new Date(),day=now.getDay(),h=now.getHours()+now.getMinutes()/60,lab=day>=1&&day<=5;
+    var msg,cls;
+    if(lab&&h>=9&&h<15){msg='● Hoy: quedan 2 huecos — escríbenos y te confirmamos hora';cls='ok';}
+    else if(lab&&h>=15&&h<18.5){msg='● Hoy: queda 1 hueco de tarde — ¿lo reservamos?';cls='ok';}
+    else if(lab&&h>=18.5){msg='● Hoy completo — te agendo para mañana a primera hora';cls='manana';}
+    else if(lab){msg='● Abrimos a las 9:00 — déjanos tu mensaje y eres el primero';cls='manana';}
+    else{msg='● Finde cerrado — escríbenos y el lunes a primera te contestamos';cls='manana';}
+    el.textContent=msg;el.classList.add(cls);
+  }
+  var f=document.getElementById('contact-form');
+  if(f)f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var n=f.nombre.value.trim(),t=f.telefono.value.trim(),m=f.mensaje.value.trim(),c=f.canal.value;
+    if(!n||!m){
+      alert('Rellena tu nombre y describe tu caso antes de enviar.');
+      return;
+    }
+    var mailto=function(){
+      var subject=encodeURIComponent('Contacto web: '+n+' ('+c+')');
+      var body=encodeURIComponent('Nombre: '+n+'\nTeléfono: '+(t||'-')+'\nPrefiere: '+c+'\n\nCuéntanos:\n'+m);
+      window.location.href='mailto:andreumatic@gmail.com?subject='+subject+'&body='+body;
+    };
+    var submitButton=f.querySelector('button[type="submit"]');
+    if(submitButton){submitButton.disabled=true;submitButton.textContent='Enviando...';}
+    fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nombre:n,telefono:t,mensaje:m,canal:c})})
+      .then(function(r){return r.json().then(function(j){return {ok:r.ok,status:r.status,json:j};});})
+      .then(function(result){
+        if(!result.ok || !result.json.ok){
+          throw new Error(result.json&&result.json.message ? result.json.message : 'No se pudo enviar la solicitud.');
+        }
+        alert(result.json.message || 'Solicitud enviada correctamente.');
+        f.reset();
+      })
+      .catch(function(){
+        /* Sin backend (p. ej. GitHub Pages): fallback a email */
+        mailto();
+      })
+      .finally(function(){
+        if(submitButton){submitButton.disabled=false;submitButton.textContent='Enviar solicitud →';}
+      });
+  });
+})();
 document.querySelectorAll('.nav a').forEach(a=>a.addEventListener('click',()=>document.getElementById('nav')?.classList.remove('open')));
 const y=document.getElementById('y'); if(y) y.textContent=new Date().getFullYear();
 

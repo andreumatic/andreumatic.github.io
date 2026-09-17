@@ -9,3 +9,7 @@ desktop.ini
 # Temporales
 *.tmp
 *.bak
+# Backend local (mailto usa /api/contact en local y Vercel)
+node_modules/
+.env
+mail-drafts/*.eml
