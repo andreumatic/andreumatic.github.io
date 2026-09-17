@@ -23,12 +23,17 @@ Web estática (sin base de datos ni PHP). Sube todo el contenido de esta carpeta
 - Rendimiento: sin frameworks, 1 CSS + 1 JS, fuentes con preconnect. Ideal Core Web Vitals.
 - Accesibilidad: skip-link, labels, contraste.
 
-## Publicar (cPanel / cualquier hosting)
-1. Comprime o sube por FTP todo tal cual a `public_html/`.
-2. Comprueba: `/`, `/servicios.html`, `/precios.html` cargan y el botón WhatsApp abre `wa.me/34654225831`.
-3. En Google Search Console: añade propiedad, sube `sitemap.xml`.
-4. Crea ficha Google Business (Manises-Valencia) enlazando a la web. Pide reseñas y sustituye los 3 testimonios de ejemplo.
-5. Sustituye fotos/logo: pon tus PNG del logo en `assets/` y cámbialos en el header si quieres (ahora uso “A” vectorial para ir rápido).
+## Publicar (Cloudflare Pages + andreumatic.com)
+1. Sube el repo a GitHub y conecta el repositorio en Cloudflare Pages (framework: None, build: sin comando, output: `/`).
+2. En Pages → Settings → Environment variables: `RESEND_API_KEY`, `CONTACT_TO`, `CONTACT_FROM` (ver `.env.example`).
+3. En Pages → Custom domains: añade `andreumatic.com` y `www.andreumatic.com`. Cloudflare te da los registros DNS.
+4. En IONOS cambia los nameservers a los de Cloudflare (o crea los registros A/CNAME que te indique). HTTPS automático.
+5. Comprueba: `/`, `/servicios.html`, `/precios.html` y un envío del formulario de prueba.
+6. En Google Search Console: añade la propiedad `andreumatic.com` y sube `sitemap.xml`.
+
+## Probar en local
+- Solo web: `node server.js` → http://localhost:3000 (el formulario guarda borrador en `mail-drafts/` y envía por Gmail si hay `.env`).
+- Web + Function Cloudflare: `npx wrangler pages dev .` (+ `.dev.vars` con `RESEND_API_KEY`). Sin clave responde en modo prueba.
 
 ## Próximos pasos recomendados
 - Añadir página `blog/` con 3 posts (“PC lento Windows 11”, “qué portátil comprar 2026”, “copia de seguridad autónomos”) para captar búsquedas.
