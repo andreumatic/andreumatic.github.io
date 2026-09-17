@@ -27,18 +27,24 @@ document.getElementById('burger')?.addEventListener('click',()=>document.getElem
     };
     var submitButton=f.querySelector('button[type="submit"]');
     if(submitButton){submitButton.disabled=true;submitButton.textContent='Enviando...';}
+    var fetchFailed=false;
     fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nombre:n,telefono:t,mensaje:m,canal:c})})
-      .then(function(r){return r.json().then(function(j){return {ok:r.ok,status:r.status,json:j};});})
+      .then(function(r){return r.json().then(function(j){return {ok:r.ok,status:r.status,json:j};});},function(){fetchFailed=true;throw new Error('red');})
       .then(function(result){
         if(!result.ok || !result.json.ok){
+          /* El servidor responde pero rechaza: avisar, no abrir mailto */
           throw new Error(result.json&&result.json.message ? result.json.message : 'No se pudo enviar la solicitud.');
         }
         alert(result.json.message || 'Solicitud enviada correctamente.');
         f.reset();
       })
-      .catch(function(){
-        /* Sin backend (p. ej. GitHub Pages): fallback a email */
-        mailto();
+      .catch(function(err){
+        if(fetchFailed){
+          /* Sin backend/red (p. ej. GitHub Pages): fallback a email */
+          mailto();
+        }else{
+          alert(err.message || 'No se pudo enviar la solicitud.');
+        }
       })
       .finally(function(){
         if(submitButton){submitButton.disabled=false;submitButton.textContent='Enviar solicitud →';}
