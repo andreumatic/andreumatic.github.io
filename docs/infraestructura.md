@@ -50,7 +50,10 @@
 
 ## Pendiente
 
-- [ ] Verificar dominio en Resend → `CONTACT_FROM=web@andreumatic.com`.
-- [ ] Alta en Google Search Console (`andreumatic.com` + sitemap).
+- [x] Dominio `andreumatic.com` activo en Cloudflare (apex + www sirven la web, v1.18 URLs definitivas).
+- [x] Email Routing `info@` → Gmail verificado y probado; `andreu@`, `administracion@` creados; filtros/etiquetas en Gmail.
+- [x] Resend dominio verificado (DKIM+SPF+DMARC); `CONTACT_FROM=web@andreumatic.com`; formulario verificado `email-enviado`.
+- [x] Gmail “enviar como” (info, andreu, administracion) por SMTP Resend + responder desde la misma dirección.
+- [x] Search Console: propiedad de dominio + `sitemap.xml` Correcto (8 páginas).
 - [ ] Enlace perfil Google Business + reseñas reales (schema `sameAs`/`aggregateRating` con TODO).
 - [ ] Fotos reales (hero, casos) — TODOs marcados en `index.html`.
