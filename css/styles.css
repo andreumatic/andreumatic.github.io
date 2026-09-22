@@ -47,6 +47,8 @@ img{max-width:100%;height:auto}
 .btn-teal:hover{background:var(--teal2)}
 .btn-outline{border-color:var(--teal);color:var(--teal)}
 .btn-outline:hover{background:var(--teal);color:#fff}
+.btn-line{border-color:var(--amber);color:var(--amber);background:rgba(232,163,61,.08)}
+.btn-line:hover{background:var(--amber);color:var(--teal);transform:translateY(-1px)}
 .btn-sm{padding:10px 16px;font-size:13.5px}
 .header-cta{display:flex;gap:10px;align-items:center;flex-shrink:0;min-width:0}
 .burger{display:none;background:none;border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:8px;padding:8px 11px;font-size:18px;flex-shrink:0}
