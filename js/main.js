@@ -13,43 +13,78 @@ document.getElementById('burger')?.addEventListener('click',()=>document.getElem
     el.textContent=msg;el.classList.add(cls);
   }
   var f=document.getElementById('contact-form');
-  if(f)f.addEventListener('submit',function(e){
+  if(f){
+  /* Anti-spam: marca de tiempo para trampa de tiempo (>=3s humano) */
+  var tsField=f.querySelector('input[name="ts"]');
+  var msgEl=document.getElementById('contact-msg');
+  var showMsg=function(text,ok){if(!msgEl)return;msgEl.hidden=false;msgEl.textContent=text;msgEl.classList.toggle('ok',!!ok);msgEl.classList.toggle('err',!ok);};
+  var hideMsg=function(){if(msgEl){msgEl.hidden=true;msgEl.textContent='';}};
+  /* Email solo visible/obligatorio si prefiere contacto por email */
+  var canalSel=f.canal, emailRow=document.getElementById('email-row');
+  var syncEmailRow=function(){var need=canalSel&&canalSel.value==='email';if(emailRow)emailRow.hidden=!need;if(f.email)f.email.required=!!need;if(!need&&f.email)f.email.value='';};
+  if(canalSel)canalSel.addEventListener('change',syncEmailRow);
+  syncEmailRow();
+  var validEmail=function(e){return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(e||'').trim());};
+  var validPhone=function(t){var d=String(t||'').replace(/[\s.\-()]/g,'');if(/^0034/.test(d))d='+34'+d.slice(4);if(/^34[6789]\d{8}$/.test(d))d='+'+d;return /^\+34[6789]\d{8}$/.test(d)||/^[6789]\d{8}$/.test(d)||/^\+[1-9]\d{7,14}$/.test(d);};
+  if(tsField)tsField.value=String(Date.now());
+  f.addEventListener('submit',function(e){
     e.preventDefault();
     var n=f.nombre.value.trim(),t=f.telefono.value.trim(),m=f.mensaje.value.trim(),c=f.canal.value;
-    if(!n||!m){
-      alert('Rellena tu nombre y describe tu caso antes de enviar.');
+    var em=f.email?f.email.value.trim():'';
+    var hp=f.empresa?f.empresa.value.trim():''; /* honeypot: bots lo rellenan */
+    var ts=tsField?parseInt(tsField.value||'0',10):0;
+    if(hp){return;} /* silencio ante bots */
+    if(Date.now()-ts<3000){showMsg('Espera unos segundos antes de enviar.',false);return;}
+    if(!n||!t||!m){
+      showMsg('Rellena tu nombre, tu teléfono y tu caso antes de enviar.',false);
+      return;
+    }
+    if(!validPhone(t)){
+      showMsg('Revisa el teléfono: usa 9 dígitos (ej. 600 123 123) o con prefijo +34.',false);
+      return;
+    }
+    if(c==='email'&&!validEmail(em)){
+      showMsg('Para contactarte por email, indícanos un email válido.',false);
       return;
     }
     var mailto=function(){
       var subject=encodeURIComponent('Contacto web: '+n+' ('+c+')');
-      var body=encodeURIComponent('Nombre: '+n+'\nTeléfono: '+(t||'-')+'\nPrefiere: '+c+'\n\nCuéntanos:\n'+m);
+      var body=encodeURIComponent('Nombre: '+n+'\nTeléfono: '+(t||'-')+'\nEmail: '+(em||'-')+'\nPrefiere: '+c+'\n\nCuéntanos:\n'+m);
       window.location.href='mailto:andreumatic@gmail.com?subject='+subject+'&body='+body;
     };
     var submitButton=f.querySelector('button[type="submit"]');
     if(submitButton){submitButton.disabled=true;submitButton.textContent='Enviando...';}
+    hideMsg();
     var fetchFailed=false;
-    fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nombre:n,telefono:t,mensaje:m,canal:c})})
+    /* Turnstile token (si el widget está configurado; si no hay sitekey, va vacío y el server lo gestiona) */
+    var tsToken='';
+    try{tsToken=(window.turnstile&&f.querySelector('.cf-turnstile'))?window.turnstile.getResponse():'';}catch(_){tsToken='';}
+    fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nombre:n,telefono:t,email:em,mensaje:m,canal:c,empresa:hp,ts:tsToken?undefined:ts,'cf-turnstile-response':tsToken})})
       .then(function(r){return r.json().then(function(j){return {ok:r.ok,status:r.status,json:j};});},function(){fetchFailed=true;throw new Error('red');})
       .then(function(result){
         if(!result.ok || !result.json.ok){
           /* El servidor responde pero rechaza: avisar, no abrir mailto */
           throw new Error(result.json&&result.json.message ? result.json.message : 'No se pudo enviar la solicitud.');
         }
-        alert(result.json.message || 'Solicitud enviada correctamente.');
+        showMsg('Gracias por enviar su consulta, se contactará en la mayor brevedad posible.',true);
+        f.classList.add('sent');
         f.reset();
+        if(tsField)tsField.value=String(Date.now());
+        try{if(window.turnstile)window.turnstile.reset();}catch(_){}
       })
       .catch(function(err){
         if(fetchFailed){
           /* Sin backend/red (p. ej. GitHub Pages): fallback a email */
           mailto();
         }else{
-          alert(err.message || 'No se pudo enviar la solicitud.');
+          showMsg(err.message || 'No se pudo enviar la solicitud.',false);
         }
       })
       .finally(function(){
         if(submitButton){submitButton.disabled=false;submitButton.textContent='Enviar solicitud →';}
       });
   });
+  }
 })();
 document.querySelectorAll('.nav a').forEach(a=>a.addEventListener('click',()=>document.getElementById('nav')?.classList.remove('open')));
 const y=document.getElementById('y'); if(y) y.textContent=new Date().getFullYear();

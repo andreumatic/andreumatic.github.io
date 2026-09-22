@@ -68,16 +68,58 @@ async function handleApiContact(req, res) {
       return sendJson(res, 400, { ok: false, message: 'JSON inválido.' });
     }
 
-    const nombre = String(payload.nombre || '').trim();
-    const telefono = String(payload.telefono || '').trim();
-    const mensaje = String(payload.mensaje || '').trim();
-    const canal = String(payload.canal || 'email').trim();
+    const nombre = String(payload.nombre || '').trim().slice(0, 120);
+    const telefono = String(payload.telefono || '').trim().slice(0, 40);
+    const email = String(payload.email || '').trim().slice(0, 120);
+    const mensaje = String(payload.mensaje || '').trim().slice(0, 2000);
+    const canal = String(payload.canal || 'email').trim().slice(0, 20);
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
 
-    if (!nombre || !mensaje) {
+    // Honeypot + trampa de tiempo (misma lógica que Cloudflare Function)
+    if (String(payload.empresa || '').trim()) {
+      return sendJson(res, 200, { ok: true, message: 'Solicitud enviada correctamente.', delivery: 'honeypot' });
+    }
+    if (payload.ts && Number(payload.ts) && Date.now() - Number(payload.ts) < 3000) {
+      return sendJson(res, 400, { ok: false, message: 'Espera unos segundos antes de enviar.' });
+    }
+
+    // Turnstile en local: si hay TURNSTILE_SECRET_KEY se verifica, si no se omite (dev)
+    const tsSecret = process.env.TURNSTILE_SECRET_KEY;
+    const tsToken = String(payload['cf-turnstile-response'] || '');
+    if (tsSecret) {
+      if (!tsToken) return sendJson(res, 400, { ok: false, message: 'Falta verificación anti-spam.' });
+      try {
+        const params = new URLSearchParams({ secret: tsSecret, response: tsToken });
+        const vr = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', { method: 'POST', body: params });
+        const vd = await vr.json().catch(() => ({}));
+        if (!vd.success) return sendJson(res, 403, { ok: false, message: 'Verificación anti-spam fallida.' });
+      } catch (e) {
+        console.error('Turnstile local error:', e);
+        return sendJson(res, 500, { ok: false, message: 'No se pudo verificar la solicitud.' });
+      }
+    }
+
+    if (!nombre || !telefono || !mensaje) {
       return sendJson(res, 400, {
         ok: false,
-        message: 'Faltan el nombre o el detalle del problema.'
+        message: 'Rellena tu nombre, tu teléfono y tu caso antes de enviar.'
       });
+    }
+    var digits = telefono.replace(/[\s.\-()]/g, '');
+    if (/^0034/.test(digits)) digits = '+34' + digits.slice(4);
+    if (/^34[6789]\d{8}$/.test(digits)) digits = '+' + digits;
+    var phoneOk = /^\+34[6789]\d{8}$/.test(digits) || /^[6789]\d{8}$/.test(digits) || /^\+[1-9]\d{7,14}$/.test(digits);
+    if (!phoneOk) {
+      return sendJson(res, 400, { ok: false, message: 'Revisa el teléfono: usa 9 dígitos (ej. 600 123 123) o con prefijo +34.' });
+    }
+    if (canal === 'email' && !emailOk) {
+      return sendJson(res, 400, { ok: false, message: 'Para contactarte por email, indícanos un email válido.' });
+    }
+    if (email && !emailOk) {
+      return sendJson(res, 400, { ok: false, message: 'Revisa el email indicado.' });
+    }
+    if (nombre.length < 2 || mensaje.length < 10) {
+      return sendJson(res, 400, { ok: false, message: 'Cuéntanos un poco más para poder ayudarte.' });
     }
 
     const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
@@ -91,6 +133,7 @@ async function handleApiContact(req, res) {
       '',
       `Nombre: ${nombre}`,
       `Teléfono: ${telefono || '-'}`,
+      `Email: ${email || '-'}`,
       `Prefiere: ${canal}`,
       '',
       'Mensaje:',
@@ -113,6 +156,7 @@ async function handleApiContact(req, res) {
           text: [
             `Nombre: ${nombre}`,
             `Teléfono: ${telefono || '-'}`,
+            `Email: ${email || '-'}`,
             `Prefiere: ${canal}`,
             '',
             'Mensaje:',

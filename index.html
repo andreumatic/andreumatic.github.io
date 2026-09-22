@@ -230,10 +230,16 @@
 <h3>Escríbenos</h3>
 <p class="form-sub">Y te contactamos para aclarar la situacion y recuperar la <em>Paz mental en tu mundo digital</em></p>
 <label>Nombre<input name="nombre" required autocomplete="name" placeholder="Tu nombre"></label>
-<label>Teléfono (opcional)<input name="telefono" inputmode="tel" autocomplete="tel" placeholder="600 123 123"></label>
+<label>Teléfono<input name="telefono" required inputmode="tel" autocomplete="tel" placeholder="600 123 123" pattern="[0-9+().\- ]{9,20}"></label>
 <label>¿Qué te pasa?<textarea name="mensaje" required rows="4" placeholder="Ej: El portátil va muy lento desde hace meses…"></textarea></label>
 <label>Prefiero que me contactes por<select name="canal"><option value="llamada">Llamada</option><option value="WhatsApp">WhatsApp</option><option value="email">Email</option></select></label>
+<label id="email-row" hidden>Email<input name="email" type="email" autocomplete="email" placeholder="tu@email.com"></label>
+<!-- Anti-spam: honeypot invisible + trampa de tiempo + Turnstile (SEO-safe, async) -->
+<label class="hp-field" aria-hidden="true" style="position:absolute!important;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">Empresa (no rellenar)<input name="empresa" autocomplete="off" tabindex="-1"></label>
+<input type="hidden" name="ts" value="">
+<div class="cf-turnstile" data-sitekey="0x4AAAAAAFAMDovL1wsCHCgN" data-theme="auto" data-size="flexible" style="min-height:65px"></div>
 <button class="btn btn-amber" type="submit">Enviar solicitud →</button>
+<p class="form-msg" id="contact-msg" role="status" aria-live="polite" hidden></p>
 </form>
 </div>
 </section>
@@ -247,6 +253,8 @@
 <div class="wrap legal"><span>Condiciones y servicios</span><a href="aviso-legal.html">Aviso legal</a><a href="privacidad.html">Privacidad</a><a href="accesibilidad.html">Accesibilidad</a><a href="entregas-reclamaciones.html">Entregas y reclamaciones</a><a href="atencion-cliente.html">Atención al cliente</a></div>
 </footer>
 <a class="wa-float" href="https://wa.me/34654225831?text=Hola%20AndreuMatic%2C%20necesito%20ayuda">✆ WhatsApp</a>
-<script src="js/main.js?v=1.12"></script>
+<!-- Turnstile: async+defer, solo afecta al formulario #contacto, no bloquea render ni SEO -->
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script src="js/main.js?v=1.13"></script>
 </body>
 </html>
