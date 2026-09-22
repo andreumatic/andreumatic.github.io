@@ -169,7 +169,10 @@ footer a:hover{color:var(--amber)}
 .wa-float:hover{transform:translateY(-2px)}
 /* service detail */
 .svc{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
-.svc article{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px}
+.svc article{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px;scroll-margin-top:96px}
+.svc article:target{animation:svc-flash 2.2s ease}
+@keyframes svc-flash{0%,60%{border-color:var(--amber);box-shadow:0 0 0 3px var(--amber),0 14px 30px rgba(15,46,41,.18)}}
+@media (prefers-reduced-motion: reduce){.svc article:target{animation:none}}
 .svc h3{color:var(--teal);margin-bottom:6px}
 .svc p{font-size:14.5px;color:var(--muted);margin-bottom:8px}
 .tag{display:inline-block;font-family:'Space Mono',monospace;font-size:11.5px;background:var(--teal);color:var(--mint);padding:4px 10px;border-radius:20px;margin-bottom:8px;letter-spacing:.04em}
