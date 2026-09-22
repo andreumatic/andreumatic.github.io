@@ -68,11 +68,11 @@ async function handleApiContact(req, res) {
       return sendJson(res, 400, { ok: false, message: 'JSON inválido.' });
     }
 
-    const nombre = String(payload.nombre || '').trim().slice(0, 120);
+    const nombre = String(payload.nombre || '').trim().replace(/[\r\n]+/g, ' ').slice(0, 120);
     const telefono = String(payload.telefono || '').trim().slice(0, 40);
     const email = String(payload.email || '').trim().slice(0, 120);
     const mensaje = String(payload.mensaje || '').trim().slice(0, 2000);
-    const canal = String(payload.canal || 'email').trim().slice(0, 20);
+    const canal = String(payload.canal || 'email').trim().replace(/[\r\n]+/g, ' ').slice(0, 20);
     const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
 
     // Honeypot + trampa de tiempo (misma lógica que Cloudflare Function)
