@@ -5,11 +5,12 @@ document.getElementById('burger')?.addEventListener('click',()=>document.getElem
   if(el){
     var now=new Date(),day=now.getDay(),h=now.getHours()+now.getMinutes()/60,lab=day>=1&&day<=5;
     var msg,cls;
-    if(lab&&h>=9&&h<15){msg='● Hoy: quedan 2 huecos — escríbenos y te confirmamos hora';cls='ok';}
-    else if(lab&&h>=15&&h<18.5){msg='● Hoy: queda 1 hueco de tarde — ¿lo reservamos?';cls='ok';}
-    else if(lab&&h>=18.5){msg='● Hoy completo — te agendo para mañana a primera hora';cls='manana';}
-    else if(lab){msg='● Abrimos a las 9:00 — déjanos tu mensaje y eres el primero';cls='manana';}
-    else{msg='● Finde cerrado — escríbenos y el lunes a primera te contestamos';cls='manana';}
+    var T=(window.amT||function(k,fb){return fb;});
+    if(lab&&h>=9&&h<15){msg=T('h.day2','● Hoy: quedan 2 huecos — escríbenos y te confirmamos hora');cls='ok';}
+    else if(lab&&h>=15&&h<18.5){msg=T('h.day1','● Hoy: queda 1 hueco de tarde — ¿lo reservamos?');cls='ok';}
+    else if(lab&&h>=18.5){msg=T('h.full','● Hoy completo — te agendo para mañana a primera hora');cls='manana';}
+    else if(lab){msg=T('h.open','● Abrimos a las 9:00 — déjanos tu mensaje y eres el primero');cls='manana';}
+    else{msg=T('h.weekend','● Finde cerrado — escríbenos y el lunes a primera te contestamos');cls='manana';}
     el.textContent=msg;el.classList.add(cls);
   }
   var f=document.getElementById('contact-form');
@@ -34,17 +35,17 @@ document.getElementById('burger')?.addEventListener('click',()=>document.getElem
     var hp=f.empresa?f.empresa.value.trim():''; /* honeypot: bots lo rellenan */
     var ts=tsField?parseInt(tsField.value||'0',10):0;
     if(hp){return;} /* silencio ante bots */
-    if(Date.now()-ts<3000){showMsg('Espera unos segundos antes de enviar.',false);return;}
+    if(Date.now()-ts<3000){showMsg(T('f.wait','Espera unos segundos antes de enviar.'),false);return;}
     if(!n||!t||!m){
-      showMsg('Rellena tu nombre, tu teléfono y tu caso antes de enviar.',false);
+      showMsg(T('f.required','Rellena tu nombre, tu teléfono y tu caso antes de enviar.'),false);
       return;
     }
     if(!validPhone(t)){
-      showMsg('Revisa el teléfono: usa 9 dígitos (ej. 600 123 123) o con prefijo +34.',false);
+      showMsg(T('f.phone','Revisa el teléfono: usa 9 dígitos (ej. 600 123 123) o con prefijo +34.'),false);
       return;
     }
     if(c==='email'&&!validEmail(em)){
-      showMsg('Para contactarte por email, indícanos un email válido.',false);
+      showMsg(T('f.email','Para contactarte por email, indícanos un email válido.'),false);
       return;
     }
     var mailto=function(){
@@ -53,7 +54,7 @@ document.getElementById('burger')?.addEventListener('click',()=>document.getElem
       window.location.href='mailto:andreumatic@gmail.com?subject='+subject+'&body='+body;
     };
     var submitButton=f.querySelector('button[type="submit"]');
-    if(submitButton){submitButton.disabled=true;submitButton.textContent='Enviando...';}
+    if(submitButton){submitButton.disabled=true;submitButton.textContent=T('f.sending','Enviando...');}
     hideMsg();
     var fetchFailed=false;
     /* Turnstile token (si el widget está configurado; si no hay sitekey, va vacío y el server lo gestiona) */
@@ -66,7 +67,7 @@ document.getElementById('burger')?.addEventListener('click',()=>document.getElem
           /* El servidor responde pero rechaza: avisar, no abrir mailto */
           throw new Error(result.json&&result.json.message ? result.json.message : 'No se pudo enviar la solicitud.');
         }
-        showMsg('Gracias por enviar su consulta, se contactará en la mayor brevedad posible.',true);
+        showMsg(T('f.ok','Gracias por enviar su consulta, se contactará en la mayor brevedad posible.'),true);
         f.classList.add('sent');
         f.reset();
         if(tsField)tsField.value=String(Date.now());
@@ -77,11 +78,11 @@ document.getElementById('burger')?.addEventListener('click',()=>document.getElem
           /* Sin backend/red (p. ej. GitHub Pages): fallback a email */
           mailto();
         }else{
-          showMsg(err.message || 'No se pudo enviar la solicitud.',false);
+          showMsg(err.message || T('f.err','No se pudo enviar la solicitud.'),false);
         }
       })
       .finally(function(){
-        if(submitButton){submitButton.disabled=false;submitButton.textContent='Enviar solicitud →';}
+        if(submitButton){submitButton.disabled=false;submitButton.textContent=T('f.submit','Enviar solicitud →');}
       });
   });
   }
