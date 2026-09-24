@@ -236,6 +236,11 @@ footer a:hover{color:var(--amber)}
   .brand{font-size:16px}
   .brand-logo{width:34px;height:34px;flex-basis:34px}
   .header-cta .btn-amber{padding:9px 12px;font-size:12.5px}
+  /* En pantallas muy pequeñas el WhatsApp de cabecera sobra (está el flotante) */
+  .header-cta .btn-amber{display:none}
+  .header-cta .call-icon{width:40px;height:40px;flex-basis:40px}
+  .lang-sel .lang-name,.lang-sel .lang-flag{display:none}
+  .brand{font-size:15px}
   .hero{padding:40px 0 32px}
   .hero-points span,.hero-points a{font-size:13.5px}
   .hero-ctas .btn{width:100%;text-align:center;white-space:normal}

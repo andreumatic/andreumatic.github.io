@@ -30,6 +30,8 @@ document.getElementById('burger')?.addEventListener('click',()=>document.getElem
   var syncEmailRow=function(){var need=canalSel&&canalSel.value==='email';if(emailRow)emailRow.hidden=!need;if(f.email)f.email.required=!!need;if(!need&&f.email)f.email.value='';};
   if(canalSel)canalSel.addEventListener('change',syncEmailRow);
   syncEmailRow();
+  /* Preselección de servicio vía ?servicio= (enlaces desde servicios.html) */
+  try{var qv=new URLSearchParams(location.search).get('servicio');if(qv&&/^[a-z-]+$/.test(qv)&&f.servicio&&f.servicio.querySelector('option[value="'+qv+'"]'))f.servicio.value=qv;}catch(_){}
   var validEmail=function(e){return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(e||'').trim());};
   var validPhone=function(t){var d=String(t||'').replace(/[\s.\-()]/g,'');if(/^0034/.test(d))d='+34'+d.slice(4);if(/^34[6789]\d{8}$/.test(d))d='+'+d;return /^\+34[6789]\d{8}$/.test(d)||/^[6789]\d{8}$/.test(d)||/^\+[1-9]\d{7,14}$/.test(d);};
   if(tsField)tsField.value=String(Date.now());
@@ -37,6 +39,7 @@ document.getElementById('burger')?.addEventListener('click',()=>document.getElem
     e.preventDefault();
     var n=f.nombre.value.trim(),t=f.telefono.value.trim(),m=f.mensaje.value.trim(),c=f.canal.value;
     var em=f.email?f.email.value.trim():'';
+    var sv=f.servicio?f.servicio.value:'';
     var hp=f.empresa?f.empresa.value.trim():''; /* honeypot: bots lo rellenan */
     var ts=tsField?parseInt(tsField.value||'0',10):0;
     if(hp){return;} /* silencio ante bots */
@@ -55,7 +58,7 @@ document.getElementById('burger')?.addEventListener('click',()=>document.getElem
     }
     var mailto=function(){
       var subject=encodeURIComponent('Contacto web: '+n+' ('+c+')');
-      var body=encodeURIComponent('Nombre: '+n+'\nTeléfono: '+(t||'-')+'\nEmail: '+(em||'-')+'\nPrefiere: '+c+'\n\nCuéntanos:\n'+m);
+      var body=encodeURIComponent('Nombre: '+n+'\nTeléfono: '+(t||'-')+'\nEmail: '+(em||'-')+'\nServicio: '+(sv||'-')+'\nPrefiere: '+c+'\n\nCuéntanos:\n'+m);
       window.location.href='mailto:andreumatic@gmail.com?subject='+subject+'&body='+body;
     };
     var submitButton=f.querySelector('button[type="submit"]');
@@ -65,7 +68,7 @@ document.getElementById('burger')?.addEventListener('click',()=>document.getElem
     /* Turnstile token (si el widget está configurado; si no hay sitekey, va vacío y el server lo gestiona) */
     var tsToken='';
     try{tsToken=(window.turnstile&&f.querySelector('.cf-turnstile'))?window.turnstile.getResponse():'';}catch(_){tsToken='';}
-    fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nombre:n,telefono:t,email:em,mensaje:m,canal:c,empresa:hp,ts:tsToken?undefined:ts,'cf-turnstile-response':tsToken})})
+    fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nombre:n,telefono:t,email:em,servicio:sv,mensaje:m,canal:c,empresa:hp,ts:tsToken?undefined:ts,'cf-turnstile-response':tsToken})})
       .then(function(r){return r.json().then(function(j){return {ok:r.ok,status:r.status,json:j};});},function(){fetchFailed=true;throw new Error('red');})
       .then(function(result){
         if(!result.ok || !result.json.ok){

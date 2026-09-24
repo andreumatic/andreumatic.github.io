@@ -81,6 +81,7 @@
 <a class="btn btn-amber" href="https://wa.me/34654225831?text=Hola%20AndreuMatic%2C%20me%20pasa%20que%3A%20" data-i18n="cta_wa">Escríbenos por WhatsApp</a>
 <a class="btn btn-ghost" href="servicios.html" data-i18n="cta_serv">Qué resolvemos →</a>
 <a class="btn btn-line" href="cita.html" data-i18n="cta_agenda">Agenda tu cita →</a>
+<a class="btn btn-ghost" href="#contacto" data-i18n="cta_caso">Cuéntanos tu caso →</a>
 </div>
 <div class="hero-trust"><span data-i18n="trust1">✔ <b>Sin sorpresas</b> en el precio</span><span data-i18n="trust2">✔ Diagnóstico <b>desde 25€</b></span><span data-i18n="trust3">✔ <b>Mismo día</b> si lo necesitas</span></div>
 <a class="huecos" id="huecos" href="cita.html">● Consultando huecos de hoy…</a>
@@ -123,7 +124,7 @@
 <div class="pain ok" data-i18n="dp6"><strong>“Quiero a alguien de confianza, no un 902”</strong>Hablar con un equipo que viene, mira, resuelve y te explica con calma. Eso es Tu Técnico de Cabecera.</div>
 </div>
 <div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap">
-<a class="btn btn-teal" href="https://wa.me/34654225831?text=Hola%20AndreuMatic%2C%20me%20pasa%20esto%3A%20" data-i18n="d_ctawa">Cuéntanos tu caso por WhatsApp</a>
+<a class="btn btn-teal" href="#contacto" data-i18n="cta_caso">Cuéntanos tu caso →</a>
 <a class="btn btn-outline" href="precios.html" data-i18n="d_ctapre">Ver precios</a>
 </div>
 </div>
@@ -201,7 +202,7 @@
 <h2 class="title" data-i18n="q_t">Somos AndreuMatic. Tu equipo técnico de cabecera.</h2>
 <p class="lead" data-i18n="q_lead1">Más de 10 años en informática y tecnología. Trabajamos en Valencia y cercanías. Somos el equipo que coge el teléfono, va a tu casa y se queda hasta que todo funciona.</p>
 <p class="lead" data-i18n="q_lead2">Nuestra misión: que sientas <strong>paz mental en tu mundo digital.</strong></p>
-<p style="margin-top:14px"><a class="btn btn-teal btn-sm" href="https://wa.me/34654225831?text=Hola%20AndreuMatic%2C%20quiero%20info" data-i18n="q_ctawa">Escríbenos por WhatsApp</a></p>
+<p style="margin-top:14px"><a class="btn btn-teal btn-sm" href="#contacto" data-i18n="cta_caso">Cuéntanos tu caso →</a></p>
 </div>
 <div class="card"><img class="about-logo" src="assets/icono-firma.png" alt="AndreuMatic logo A – servicio técnico informático Valencia" width="586" height="586"><h3 style="margin-top:12px" data-i18n="q_zona">Zona de servicio</h3><p data-i18n="q_zonap">Valencia · Paterna · Torrent · Mislata · Burjassot · Quart de Poblet · Aldaia · Manises · Paiporta · Alboraya · Xirivella · Alaquàs</p><p class="zona-note" data-i18n="q_znota">Desplazamiento <strong>desde 15€</strong> en Valencia y cercanías (se confirma antes).</p><p style="margin-top:8px" data-i18n="q_remoto">¿Fuera de zona? Gran parte se resuelve en <strong>remoto</strong>.</p><p style="margin-top:10px"><a class="link-more" href="tel:+34654225831" data-i18n="q_llamar">Llamar: 654 225 831</a> · <a class="link-more" href="mailto:andreumatic@gmail.com">andreumatic@gmail.com</a></p></div>
 </div>
@@ -239,6 +240,7 @@
 <label data-i18n="lb_tel">Teléfono<input name="telefono" required inputmode="tel" autocomplete="tel" placeholder="600 123 123" pattern="[0-9+().\- ]{9,20}"></label>
 <label data-i18n="lb_msg">¿Qué te pasa?<textarea name="mensaje" required rows="4" placeholder="Ej: El portátil va muy lento desde hace meses…" data-i18n-ph="ph_msg"></textarea></label>
 <label data-i18n="lb_canal">Prefiero que me contactes por<select name="canal"><option value="llamada" data-i18n="op_llamada">Llamada</option><option value="WhatsApp">WhatsApp</option><option value="email">Email</option></select></label>
+<label data-i18n="lb_serv">¿De qué servicio viene? (opcional)<select name="servicio"><option value="" data-i18n="sv_any">— Elige si lo tienes claro —</option><option value="pc-lento" data-i18n="sv_pc">PC lento</option><option value="datos" data-i18n="sv_datos">Recuperar datos</option><option value="mudanza" data-i18n="sv_mud">Equipo nuevo</option><option value="compras" data-i18n="sv_comp">Asesoría de compra</option><option value="cabecera" data-i18n="sv_cab">Técnico de cabecera</option><option value="remoto" data-i18n="sv_rem">Soporte remoto</option><option value="seguridad" data-i18n="sv_seg">Seguridad digital</option><option value="hogar">Smart home / wifi</option><option value="mantenimiento" data-i18n="sv_mant">Mantenimiento</option><option value="web" data-i18n="sv_web">Web / correo</option><option value="software" data-i18n="sv_soft">Software a medida</option><option value="integracion" data-i18n="sv_int">Integración</option><option value="empresa" data-i18n="sv_emp">Empresa / negocio</option><option value="otro" data-i18n="sv_otro">Otro tema</option></select></label>
 <label id="email-row" hidden>Email<input name="email" type="email" autocomplete="email" placeholder="tu@email.com"></label>
 <!-- Anti-spam: honeypot invisible + trampa de tiempo + Turnstile (SEO-safe, async) -->
 <label class="hp-field" aria-hidden="true" style="position:absolute!important;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">Empresa (no rellenar)<input name="empresa" autocomplete="off" tabindex="-1"></label>
