@@ -19,7 +19,7 @@ const CFG = {
   DAYS_AHEAD: 14, // horizonte de bloqueo (igual que la ventana del horario)
   WORK_START_H: 9,
   WORK_END_H: 19, // fin exclusivo
-  MAX_BLOCKS_PER_DAY: 3,
+  MAX_BLOCKS_PER_DAY: 6,
   MIN_FREE_PER_DAY: 2,
   MARK: '#auto-bloqueo',
   TITLE: 'Bloqueo agenda'
