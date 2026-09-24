@@ -125,7 +125,7 @@ f_t: 'Preguntes que ens fan abans de telefonar',
 fq1s: 'Quant em costarà?',
 fq1a: 'Sempre ho saps abans de decidir. Mira els <a href="precios.html">preus ací</a>. El diagnòstic a casa són 25€, i si repares amb nosaltres, et ix gratis.',
 fq2s: 'Podeu vindre hui?',
-fq2a: 'Si tenim forat, sí. És el servici “mateix dia” (+15€ sobre el servici). Escriu-nos i et diem hora real.',
+fq2a: 'Si tenim espai, sí. És el servici “mateix dia” (+15€ sobre el servici). Escriu-nos i et diem hora real.',
 fq3s: 'No entenc d’ordinadors, m’embolcallaràs?',
 fq3a: 'No. T’ho expliquem amb paraules normals i sense presses. La majoria repetix per això.',
 fq4s: 'I si no té arregle?',
@@ -173,8 +173,8 @@ var RUNTIME = {
 'f.err': 'No s’ha pogut enviar la sol·licitud.',
 'f.sending': 'Enviant...',
 'f.submit': 'Enviar sol·licitud →',
-'h.day2': '● Hui: queden 2 forats — escriu-nos i et confirmem hora',
-'h.day1': '● Hui: queda 1 forat de vesprada — el reservem?',
+'h.day2': '● Hui: queden 2 espais — escriu-nos i et confirmem hora',
+'h.day1': '● Hui: queda 1 espai de vesprada — el reservem?',
 'h.full': '● Hui complet — t’agende per a demà a primera hora',
 'h.open': '● Obrim a les 9:00 — deixa’ns el teu missatge i eres el primer',
 'h.weekend': '● Cap de setmana tancat — escriu-nos i dilluns a primera et contestem'
@@ -232,6 +232,7 @@ function applyAll(){
   }
   var _ls = document.getElementById('lang-select');
   if (_ls) _ls.value = lang;
+  if (window.amRefreshDynamic) window.amRefreshDynamic();
   var _fl = document.querySelectorAll('#lang-flag .flag'), _fi;
   for (_fi = 0; _fi < _fl.length; _fi++){ _fl[_fi].style.display = (_fl[_fi].getAttribute('data-flag') !== lang) ? 'none' : ''; }
 }

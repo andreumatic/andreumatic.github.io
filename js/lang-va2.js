@@ -74,7 +74,7 @@ pr_r9: 'El Teu Tècnic de Capçalera<small>Dubtes dia a dia PC, mòbil o apps, s
 pr_r10: 'Revisió seguretat digital<small>Contrasenyes, còpies, phishing</small>',
 pr_r11: 'Smart home bàsic<small>Router, càmeres, endolls intel·ligents</small>',
 pr_r12: 'Web: resolució i canvis<small>Configuracions i/o modificacions web · Caiguda, hosting, domini, correu, WordPress</small>',
-pr_call1: '<b>Mateix dia:</b> si ho necessites hui, +15€ sobre el servici (segons forat en agenda).',
+pr_call1: '<b>Mateix dia:</b> si ho necessites hui, +15€ sobre el servici (segons espai en agenda).',
 pr_call2: '<b>Garantia 15 dies</b> en el treball realitzat. No cobrix fallos de programes de tercers ni mal ús posterior.',
 pr_cta_part: 'Demanar servici particular →',
 pr_emp_t: 'Empreses i autònoms',
@@ -159,4 +159,19 @@ en_h4: '4. Com reclamar',
 en_p4: 'Telefona’ns al <a class="link-more" href="tel:+34654225831">654 225 831</a>, escriu-nos a <a class="link-more" href="mailto:andreumatic@gmail.com">andreumatic@gmail.com</a> o per <a class="link-more" href="https://wa.me/34654225831?text=Hola%20AndreuMatic%2C%20quiero%20poner%20una%20reclamación">WhatsApp</a>. També tens a la teua disposició els fulls de reclamacions de la Generalitat Valenciana i la plataforma europea de resolució de litigis en línia: <a class="link-more" href="https://ec.europa.eu/consumers/odr">ec.europa.eu/consumers/odr</a>.',
 fof_h1: 'Vaja, açò s’ha trencat… però jo ho arregle.',
 fof_p: 'La pàgina no existix. Millor parlem directament.'
+};
+window.AM_X5 = {
+pg_cita_t: 'Demanar cita | AndreuMatic',
+pg_cita_d: 'Reserva la teua cita amb AndreuMatic a València: tria dia i hora, rep confirmació. Diagnòstic des de 25€.',
+ci_crumb: 'Demanar cita',
+ci_eb: 'Reserva el teu espai',
+ci_t: 'Agenda la teua cita en 1 minut',
+ci_lead: 'Tria dia i hora dels espais disponibles reals. Rep confirmació al moment i t’avisem abans. Sense registres ni apps.',
+ci_s1t: '1. Tria dia i hora',
+ci_s1p: 'Calendari amb disponibilitat real, actualitzat al moment.',
+ci_s2t: '2. Deixa les teues dades',
+ci_s2p: 'Nom, telèfon i què et passa. Només lo necessari.',
+ci_s3t: '3. Et confirmem',
+ci_s3p: 'Confirmació immediata + recordatori per WhatsApp o email.',
+ci_alt: 'Prefirixes escriure? <a class="link-more" href="index.html#contacto">Ves al formulari →</a> o <a class="link-more" href="https://wa.me/34654225831?text=Hola%20AndreuMatic%2C%20quiero%20pedir%20cita">WhatsApp directe</a>.'
 };

@@ -2,7 +2,8 @@ document.getElementById('burger')?.addEventListener('click',()=>document.getElem
 /* Mejoras v1.12 (aditivo): huecos de hoy + formulario mailto */
 (function(){
   var el=document.getElementById('huecos');
-  if(el){
+  function paintHuecos(){
+    if(!el)return;
     var now=new Date(),day=now.getDay(),h=now.getHours()+now.getMinutes()/60,lab=day>=1&&day<=5;
     var msg,cls;
     var T=(window.amT||function(k,fb){return fb;});
@@ -13,6 +14,8 @@ document.getElementById('burger')?.addEventListener('click',()=>document.getElem
     else{msg=T('h.weekend','● Finde cerrado — escríbenos y el lunes a primera te contestamos');cls='manana';}
     el.textContent=msg;el.classList.add(cls);
   }
+  window.amRefreshDynamic=function(){paintHuecos();};
+  paintHuecos();
   var f=document.getElementById('contact-form');
   if(f){
   /* Anti-spam: marca de tiempo para trampa de tiempo (>=3s humano) */
