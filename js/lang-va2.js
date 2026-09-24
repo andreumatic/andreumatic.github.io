@@ -175,3 +175,6 @@ ci_s3t: '3. Et confirmem',
 ci_s3p: 'Confirmació immediata + recordatori per WhatsApp o email.',
 ci_alt: 'Prefirixes escriure? <a class="link-more" href="index.html#contacto">Ves al formulari →</a> o <a class="link-more" href="https://wa.me/34654225831?text=Hola%20AndreuMatic%2C%20quiero%20pedir%20cita">WhatsApp directe</a>.'
 };
+window.AM_X6 = {
+sl_t: 'Disponibilitat esta setmana'
+};

@@ -188,6 +188,7 @@ footer a:hover{color:var(--amber)}
 /* service detail */
 .svc{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
 .svc article{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px;scroll-margin-top:96px}
+#contacto,#como-funciona,#opiniones,#particulares,#empresas,#notas{scroll-margin-top:88px}
 .svc article:target{animation:svc-flash 4s ease}
 @keyframes svc-flash{0%,75%{border-color:var(--amber);box-shadow:0 0 0 3px var(--amber),0 14px 30px rgba(15,46,41,.18)}}
 @media (prefers-reduced-motion: reduce){.svc article:target{animation:none}}

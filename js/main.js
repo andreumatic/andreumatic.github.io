@@ -16,6 +16,8 @@ document.getElementById('burger')?.addEventListener('click',()=>document.getElem
   }
   window.amRefreshDynamic=function(){paintHuecos();};
   paintHuecos();
+  /* Anclas cross-page (p.ej. cita→#contacto en móvil): recoloca tras carga completa */
+  (function(){function go(){var h=location.hash;if(!h||h.length<2)return;try{var t=document.querySelector(h);if(t)t.scrollIntoView({block:'start'});}catch(_){}}window.addEventListener('load',function(){setTimeout(go,350);});})();
   var f=document.getElementById('contact-form');
   if(f){
   /* Anti-spam: marca de tiempo para trampa de tiempo (>=3s humano) */
