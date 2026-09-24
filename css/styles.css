@@ -59,6 +59,12 @@ img{max-width:100%;height:auto}
 .lang-sel [hidden]{display:none}
 .lang-flag{display:flex}
 .flag{width:18px;height:12px;border-radius:2px;box-shadow:0 0 0 1px rgba(0,0,0,.25);display:block}
+/* Móvil: selector compacto (bandera + desplegable, sin etiqueta) y sin zoom de iOS */
+@media(max-width:900px){
+  .lang-sel .lang-name{display:none}
+  .lang-sel{gap:4px}
+  .lang-sel select{font-size:16px;padding:6px 4px}
+}
 .header-cta{display:flex;gap:10px;align-items:center;flex-shrink:0;min-width:0}
 .burger{display:none;background:none;border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:8px;padding:8px 11px;font-size:18px;flex-shrink:0}
 .call-icon{display:none}
