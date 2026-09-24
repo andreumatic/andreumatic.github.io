@@ -6,8 +6,8 @@
   if (!box) return;
   var G = 'https://calendar.app.google/tRn4sTjoqf515veK6';
   var isVa = function(){ return document.documentElement.lang === 'ca'; };
-  var DN_ES = ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb'];
-  var DN_VA = ['dg', 'dl', 'dt', 'dc', 'dj', 'dv', 'ds'];
+  var DN_ES = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+  var DN_VA = ['diumenge', 'dilluns', 'dimarts', 'dimecres', 'dijous', 'divendres', 'dissabte'];
   var ALL = ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00'];
   function sample(){
     var days = [], d = new Date(), n = 0;
@@ -27,7 +27,8 @@
     days.forEach(function (dd, idx){
       var h = document.createElement('h3');
       h.style.margin = '14px 0 8px';
-      h.textContent = DN[dd.wd] + ' ' + dd.day;
+      var dn = DN[dd.wd];
+      h.textContent = dn.charAt(0).toUpperCase() + dn.slice(1) + ' ' + dd.day;
       box.appendChild(h);
       var row = document.createElement('p');
       row.style.cssText = 'display:flex;gap:8px;flex-wrap:wrap;margin:0 0 4px';
@@ -55,7 +56,7 @@
     });
     if (window.amRefreshDynamic) { /* nada dinámico con claves aquí */ }
   }
-  var SLOTS_URL = 'https://script.google.com/macros/s/AKfycbz5gNC53hYCV2nlu08yOkAQnCmrDv_5cBkqZ0lJLyGq-2Ea5tZEgkrIcfDw4B7-4KSN/exec';
+  var SLOTS_URL = 'https://script.google.com/macros/s/AKfycbxHHfAiR6tih5LFGH9QDTeQ0L7b7YJlOed6cXB9C4z-YQ-QBpUY1WV_Sr00w2dDmSi-/exec';
   fetch(SLOTS_URL)
     .then(function (r){ if (!r.ok) throw 0; return r.json(); })
     .then(function (d){ var ok = !!(d.days && d.days.length); render(ok ? d.days : sample(), ok); })
