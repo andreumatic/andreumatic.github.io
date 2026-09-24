@@ -21,7 +21,7 @@
     }
     return days;
   }
-  function render(days){
+  function render(days, live){
     var DN = isVa() ? DN_VA : DN_ES;
     box.innerHTML = '';
     days.forEach(function (dd, idx){
@@ -46,17 +46,18 @@
         row.appendChild(a);
       });
       box.appendChild(row);
-      if (idx === 0){
+      if (idx === 0 && !live){
         var note = document.createElement('p');
         note.style.cssText = 'font-size:12.5px;color:var(--muted);margin:10px 0 0';
-        note.textContent = isVa() ? 'Vista prèvia amb dades d’exemple. Amb la clau API mostrarà els teus espais reals.' : 'Vista previa con datos de ejemplo. Con la clave API mostrará tus huecos reales.';
+        note.textContent = isVa() ? 'No s’ha pogut carregar la disponibilitat en directe. Prova de nou o reserva per WhatsApp.' : 'No se pudo cargar la disponibilidad en directo. Prueba de nuevo o reserva por WhatsApp.';
         box.appendChild(note);
       }
     });
     if (window.amRefreshDynamic) { /* nada dinámico con claves aquí */ }
   }
-  fetch('/api/slots')
+  var SLOTS_URL = 'https://script.google.com/macros/s/AKfycbz5gNC53hYCV2nlu08yOkAQnCmrDv_5cBkqZ0lJLyGq-2Ea5tZEgkrIcfDw4B7-4KSN/exec';
+  fetch(SLOTS_URL)
     .then(function (r){ if (!r.ok) throw 0; return r.json(); })
-    .then(function (d){ render(d.days && d.days.length ? d.days : sample()); })
-    .catch(function (){ render(sample()); });
+    .then(function (d){ var ok = !!(d.days && d.days.length); render(ok ? d.days : sample(), ok); })
+    .catch(function (){ render(sample(), false); });
 })();
