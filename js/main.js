@@ -2,11 +2,11 @@ document.getElementById('burger')?.addEventListener('click',()=>document.getElem
 /* Mejoras v1.12 (aditivo): huecos de hoy + formulario mailto */
 (function(){
   var el=document.getElementById('huecos');
+  var T=(window.amT||function(k,fb){return fb;});
   function paintHuecos(){
     if(!el)return;
     var now=new Date(),day=now.getDay(),h=now.getHours()+now.getMinutes()/60,lab=day>=1&&day<=5;
     var msg,cls;
-    var T=(window.amT||function(k,fb){return fb;});
     if(lab&&h>=9&&h<15){msg=T('h.day2','● Hoy: quedan 2 huecos — escríbenos y te confirmamos hora');cls='ok';}
     else if(lab&&h>=15&&h<18.5){msg=T('h.day1','● Hoy: queda 1 hueco de tarde — ¿lo reservamos?');cls='ok';}
     else if(lab&&h>=18.5){msg=T('h.full','● Hoy completo — te agendo para mañana a primera hora');cls='manana';}

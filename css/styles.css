@@ -287,7 +287,7 @@ a.huecos{text-decoration:none;cursor:pointer}
 .form-card label{display:block;font-size:13.5px;font-weight:600;color:var(--teal);margin-bottom:12px}
 .form-card input,.form-card textarea,.form-card select{display:block;width:100%;margin-top:6px;font:inherit;font-weight:400;color:var(--ink);background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:11px 13px}
 .form-card input:focus,.form-card textarea:focus,.form-card select:focus{outline:2px solid var(--amber);border-color:var(--amber)}
-.form-card textarea{resize:vertical;min-height:96px}
+.form-card textarea{resize:none;min-height:96px}
 .form-card button{margin-top:8px;width:100%}
 .form-msg{margin-top:14px;font-size:14px;font-weight:600;border-radius:10px;padding:12px 14px}
 .form-msg.ok{background:#e6f4ec;color:#0f5132;border:1.5px solid #badbcc}
