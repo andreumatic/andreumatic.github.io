@@ -277,6 +277,7 @@ footer a:hover{color:var(--amber)}
 a.huecos{text-decoration:none;cursor:pointer}
 .cita-box{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:18px}
 .cita-box iframe{width:100%;height:720px;border:0;display:block}
+@media (prefers-reduced-motion: reduce){.scope-rainbow{display:none}}
 .rating-line{margin:10px 0 4px;font-size:14.5px;color:var(--teal)}
 .rating-line .muted,.rating-line .muted a{color:var(--muted);font-size:13px}
 .zona-note{margin-top:8px;font-size:14px;color:var(--muted)}

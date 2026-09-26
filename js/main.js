@@ -114,3 +114,31 @@ const y=document.getElementById('y'); if(y) y.textContent=new Date().getFullYear
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var t=e.target;if(t.dataset.d)t.style.transitionDelay=t.dataset.d+'ms';t.classList.add('in');io.unobserve(t);setTimeout(function(){t.style.transitionDelay='';},750);}});},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
   els.forEach(function(el){io.observe(el);});
 })();
+/* Hero vivo: el logo responde al ratón y al scroll (solo puntero fino, sin reduced-motion) */
+(function(){try{
+  if(!window.matchMedia||!window.matchMedia('(pointer:fine)').matches)return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var logo=document.querySelector('.hero-logo');if(!logo)return;
+  var hero=logo.closest('.hero');if(!hero)return;
+  var tx=0,ty=0,sy=0,raf=0;
+  logo.style.transition='transform .18s ease-out, box-shadow .18s ease-out';
+  function paint(){raf=0;
+    if(tx===0&&ty===0){logo.style.transform=sy?('translateY('+(sy*0.05).toFixed(1)+'px)') :'';logo.style.boxShadow='';return;}
+    logo.style.transform='perspective(900px) rotateX('+(-ty*7).toFixed(2)+'deg) rotateY('+(tx*10).toFixed(2)+'deg)';
+    logo.style.boxShadow=(-tx*26).toFixed(1)+'px '+(18-ty*26).toFixed(1)+'px 52px rgba(0,0,0,.42)';
+  }
+  function sched(){if(!raf&&window.requestAnimationFrame)raf=window.requestAnimationFrame(paint);else paint();}
+  hero.addEventListener('mousemove',function(e){var r=hero.getBoundingClientRect();tx=(e.clientX-r.left)/r.width-0.5;ty=(e.clientY-r.top)/r.height-0.5;sched();});
+  hero.addEventListener('mouseleave',function(){tx=0;ty=0;sched();});
+  window.addEventListener('scroll',function(){sy=window.scrollY||0;sched();},{passive:true});
+}catch(_){}})();
+/* Pulso ECG: punto guiado por getPointAtLength (a prueba de todo) */
+(function(){try{
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  if(!window.requestAnimationFrame)return;
+  var line=document.querySelector('.scope-base'),dot=document.querySelector('.scope-dot');
+  if(!line||!dot||!line.getTotalLength)return;
+  var len=line.getTotalLength();
+  function fr(ts){var p=(((ts||0)/3200)%1+1)%1;try{var pt=line.getPointAtLength(p*len);dot.setAttribute('cx',pt.x.toFixed(1));dot.setAttribute('cy',pt.y.toFixed(1));}catch(_){}window.requestAnimationFrame(fr);}
+  window.requestAnimationFrame(fr);
+}catch(_){}})();
