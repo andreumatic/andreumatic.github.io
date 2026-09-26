@@ -213,12 +213,23 @@ const y=document.getElementById('y'); if(y) y.textContent=new Date().getFullYear
   function rotateC(){
     var P=document.documentElement.lang==='ca'?VA:ES;
     var slot=Math.floor(Math.random()*(cards.length-1)),opts=[],i;
-    for(i=0;i<P.length;i++){if(shown.indexOf(i)===-1)opts.push(i);}
+    for(i=0;i<P.length;i++){if(i!==5&&shown.indexOf(i)===-1)opts.push(i);}
     if(!opts.length)return;
     var pick=opts[Math.floor(Math.random()*opts.length)];
     shown[slot]=pick;
-    cards[slot].classList.add('swap');
-    setTimeout(function(){cards[slot].innerHTML='<strong>'+P[pick].t+'</strong>'+P[pick].b;cards[slot].classList.remove('swap');},420);
+    var cd=cards[slot],lg=document.documentElement.lang;
+    cd.classList.add('swap');
+    setTimeout(function(){
+      cd.classList.remove('swap');cd.classList.add('typing');
+      cd.innerHTML='<strong></strong><span></span>';
+      var st=cd.querySelector('strong'),sb=cd.querySelector('span'),ph=0,ct=0,cb=0;
+      (function type(){
+        if(document.documentElement.lang!==lg){cd.classList.remove('typing');return;}
+        if(ph===0){ct++;st.textContent=P[pick].t.slice(0,ct);if(ct>=P[pick].t.length){ph=1;}}
+        else{cb++;sb.textContent=P[pick].b.slice(0,cb);if(cb>=P[pick].b.length){setTimeout(function(){cd.classList.remove('typing');},500);return;}}
+        setTimeout(type,10);
+      })();
+    },420);
   }
   setInterval(rotateC,7000);
 }catch(_){}})();
