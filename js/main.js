@@ -254,7 +254,7 @@ const y=document.getElementById('y'); if(y) y.textContent=new Date().getFullYear
       })(i);
     }
   })();
-  setInterval(rotateC,3000);
+  setInterval(rotateC,4000);
 }catch(_){}})();
 /* Scroll corto con easing para anclas internas (evita el arrastre largo del nativo) */
 (function(){try{
