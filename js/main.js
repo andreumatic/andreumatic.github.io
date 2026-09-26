@@ -1,4 +1,4 @@
-document.getElementById('burger')?.addEventListener('click',()=>document.getElementById('nav')?.classList.toggle('open'));
+﻿document.getElementById('burger')?.addEventListener('click',()=>document.getElementById('nav')?.classList.toggle('open'));
 /* Mejoras v1.12 (aditivo): huecos de hoy + formulario mailto */
 (function(){
   var el=document.getElementById('huecos');
@@ -59,7 +59,7 @@ document.getElementById('burger')?.addEventListener('click',()=>document.getElem
     var mailto=function(){
       var subject=encodeURIComponent('Contacto web: '+n+' ('+c+')');
       var body=encodeURIComponent('Nombre: '+n+'\nTeléfono: '+(t||'-')+'\nEmail: '+(em||'-')+'\nServicio: '+(sv||'-')+'\nPrefiere: '+c+'\n\nCuéntanos:\n'+m);
-      window.location.href='mailto:andreumatic@gmail.com?subject='+subject+'&body='+body;
+      window.location.href='mailto:info@andreumatic.com?subject='+subject+'&body='+body;
     };
     var submitButton=f.querySelector('button[type="submit"]');
     if(submitButton){submitButton.disabled=true;submitButton.textContent=T('f.sending','Enviando...');}
@@ -177,8 +177,8 @@ const y=document.getElementById('y'); if(y) y.textContent=new Date().getFullYear
 (function(){try{
   if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
   var items=document.querySelectorAll('.pain-card ul li');if(!items||items.length<2)return;
-  var ES=['El PC tarda 10 minutos en arrancar','“No he hecho copia y tengo miedo de perderlo todo”','Compraste un portátil y no era lo que necesitabas','Tienes 40 contraseñas y no recuerdas ninguna','El móvil no tiene espacio ni para una foto más','Te llaman del "banco" y no sabes si es un timo','El correo no llega y nadie te explica por qué','El disco hace un ruido raro que da mal rollo','Me han hackeado la cuenta y no puedo entrar','La tele no se conecta al wifi desde el domingo'];
-  var VA=['El PC tarda 10 minuts en arrancar','“No he fet còpia i tinc por de perdre-ho tot”','Vas comprar un portàtil i no era lo que necessitaves','Tens 40 contrasenyes i no recordes cap','El mòbil no té espai ni per a una foto més','Et telefonen del "banc" i no saps si és un timo','El correu no arriba i ningú t’explica per què','El disc fa un soroll estrany que fa mala espina','M’han hackejat el compte i no puc entrar','La tele no es connecta al wifi des de diumenge'];
+  var ES=['El PC tarda 10 minutos en arrancar','“No he hecho copia y tengo miedo de perderlo todo”','Compraste un portátil y no era lo que necesitabas','Tienes 40 contraseñas y no recuerdas ninguna','El móvil no tiene espacio ni para una foto más','Te llaman del "banco" y no sabes si es un timo','El correo no llega y nadie te explica por qué','El disco hace un ruido raro que da mal rollo','Me han hackeado la cuenta y no puedo entrar','La tele no se conecta al wifi desde el domingo','La tablet de los niños no para de pedir espacio','El Excel se cierra solo y pierdo lo trabajado','Me cobran por un antivirus que no hace nada','El altavoz inteligente ya no me entiende'];
+  var VA=['El PC tarda 10 minuts en arrancar','“No he fet còpia i tinc por de perdre-ho tot”','Vas comprar un portàtil i no era lo que necessitaves','Tens 40 contrasenyes i no recordes cap','El mòbil no té espai ni per a una foto més','Et telefonen del "banc" i no saps si és un timo','El correu no arriba i ningú t’explica per què','El disc fa un soroll estrany que fa mala espina','M’han hackejat el compte i no puc entrar','La tele no es connecta al wifi des de diumenge','La tablet dels xiquets no para de demanar espai','L’Excel es tanca sol i perd lo treballat','Em cobren per un antivirus que no fa res','L’altaveu intel·ligent ja no m’entén'];
   var shown=[0,1,2,3],next=0;
   function rotate(){
     var P=document.documentElement.lang==='ca'?VA:ES;
@@ -188,10 +188,39 @@ const y=document.getElementById('y'); if(y) y.textContent=new Date().getFullYear
     if(!opts.length)return;
     var pick=opts[Math.floor(Math.random()*opts.length)];
     shown[slot]=pick;
-    items[slot].classList.add('swap');
-    setTimeout(function(){items[slot].textContent=P[pick];items[slot].classList.remove('swap');},420);
+    for(i=0;i<items.length;i++){items[i].classList.remove('typing');}
+    var li=items[slot],lg=document.documentElement.lang;
+    li.classList.add('swap');
+    setTimeout(function(){
+      li.classList.remove('swap');li.classList.add('typing');
+      var txt=P[pick],j=0;li.textContent='';
+      (function type(){
+        if(document.documentElement.lang!==lg){li.classList.remove('typing');return;}
+        j++;li.textContent=txt.slice(0,j);
+        if(j<txt.length){setTimeout(type,18);}else{setTimeout(function(){li.classList.remove('typing');},600);}
+      })();
+    },420);
   }
   setInterval(rotate,3000);
+}catch(_){}})();
+/* Casos rotativos: las cajitas cambian con el mismo fundido, cada 7s */
+(function(){try{
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var cards=document.querySelectorAll('.pain-grid .pain');if(!cards||cards.length<2)return;
+  var ES=[{t:'“Mi ordenador va lentísimo”',b:'Arranca mal, se cuelga, abrir Word es un suplicio. Pierdes tiempo y paciencia cada día.'},{t:'“Tengo miedo de perder mis fotos y documentos”',b:'El disco hace ruidos, te pide formatear, o borraste algo importante. Cada hora cuenta.'},{t:'“No sé qué comprar y me da miedo que me engañen”',b:'Portátil, PC, móvil… Hay 200 modelos y todos parecen iguales. Una mala compra son 600€ a la basura.'},{t:'“Estreno ordenador y es un caos pasarlo todo”',b:'Programas, contraseñas, correo, fotos… ¿Y si se pierde algo por el camino?'},{t:'“El wifi, la impresora, la cámara… fallan cuando quieren”',b:'En casa o en el negocio, cuando falla, todo se para.'},{t:'“Quiero a alguien de confianza, no un 902”',b:'Hablar con un equipo que viene, mira, resuelve y te explica con calma. Eso es Tu Técnico de Cabecera.'},{t:'“El móvil no da más de sí”',b:'Lento, sin espacio, la batería vuela. Lo dejamos fino o te decimos si toca cambiar.'},{t:'“Cada mes pago por algo que no entiendo”',b:'Suscripciones, antivirus, nube… Revisamos qué pagas y cortamos lo que sobra.'},{t:'“El teletrabajo se me cae cada día”',b:'VPN y videollamadas que se congelan a las 9 en punto. Lo dejamos estable.'},{t:'“Heredé un caos de cables y claves”',b:'Piso u oficina nueva con todo mezclado. Lo ordenamos y te lo dejamos documentado.'}];
+  var VA=[{t:'“El meu ordinador va lentíssim”',b:'Arranca malament, es penja, obrir Word és un suplici. Perds temps i paciència cada dia.'},{t:'“Tinc por de perdre les meues fotos i documents”',b:'El disc fa sorolls, et demana formatejar, o vas esborrar alguna cosa important. Cada hora compta.'},{t:'“No sé què comprar i tinc por que m’enganyen”',b:'Portàtil, PC, mòbil… Hi ha 200 models i tots pareixen iguals. Una mala compra són 600€ a la fem.'},{t:'“Estrene ordinador i és un caos passar-ho tot”',b:'Programes, contrasenyes, correu, fotos… I si es perd alguna cosa pel camí?'},{t:'“El wifi, la impressora, la càmera… fallen quan volen”',b:'A casa o al negoci, quan falla, tot es para.'},{t:'“Vull algú de confiança, no un 902”',b:'Parlar amb un equip que ve, mira, resol i t’explica amb calma. Això és El Teu Tècnic de Capçalera.'},{t:'“El mòbil no dona més de si”',b:'Lent, sense espai, la bateria vola. El deixem fi o et diem si toca canviar.'},{t:'“Cada mes pague per alguna cosa que no entenc”',b:'Subscripcions, antivirus, núvol… Revisem què pagues i tallem lo que sobra.'},{t:'“El teletreball se’m cau cada dia”',b:'VPN i videotelefonades que es congelen a les 9 en punt. Ho deixem estable.'},{t:'“He heretat un caos de cables i claus”',b:'Pis o oficina nova amb tot mesclat. Ho ordenem i t’ho deixem documentat.'}];
+  var shown=[0,1,2,3,4,5];
+  function rotateC(){
+    var P=document.documentElement.lang==='ca'?VA:ES;
+    var slot=Math.floor(Math.random()*cards.length),opts=[],i;
+    for(i=0;i<P.length;i++){if(shown.indexOf(i)===-1)opts.push(i);}
+    if(!opts.length)return;
+    var pick=opts[Math.floor(Math.random()*opts.length)];
+    shown[slot]=pick;
+    cards[slot].classList.add('swap');
+    setTimeout(function(){cards[slot].innerHTML='<strong>'+P[pick].t+'</strong>'+P[pick].b;cards[slot].classList.remove('swap');},420);
+  }
+  setInterval(rotateC,7000);
 }catch(_){}})();
 /* Scroll corto con easing para anclas internas (evita el arrastre largo del nativo) */
 (function(){try{

@@ -1,4 +1,4 @@
-// Cloudflare Pages Function: POST /api/contact
+﻿// Cloudflare Pages Function: POST /api/contact
 // Anti-spam por capas (SEO-safe: nada cambia en el HTML indexable):
 //  1) Honeypot "empresa" (bots lo rellenan) -> descartado silencioso
 //  2) Trampa de tiempo: el front envía ts (ms). <3s = bot
@@ -9,7 +9,7 @@
 //   TURNSTILE_SECRET_KEY (obligatoria en prod), TURNSTILE_SITE_KEY (pública, va en HTML)
 // En local: `npx wrangler pages dev .` + `.dev.vars` con las mismas variables.
 
-const TO_DEFAULT = 'andreumatic@gmail.com';
+const TO_DEFAULT = 'info@andreumatic.com';
 const FROM_DEFAULT = 'onboarding@resend.dev';
 const MAX_LEN = 2000;
 

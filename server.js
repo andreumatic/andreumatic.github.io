@@ -1,4 +1,4 @@
-const http = require('http');
+﻿const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const { URL } = require('url');
@@ -128,7 +128,7 @@ async function handleApiContact(req, res) {
     const subject = `Contacto web: ${nombre} (${canal})`;
     const emailText = [
       'From: Sistema AndreuMatic <noreply@localhost>',
-      'To: andreumatic@gmail.com',
+      'To: info@andreumatic.com',
       `Subject: ${subject}`,
       'MIME-Version: 1.0',
       'Content-Type: text/plain; charset="UTF-8"',
