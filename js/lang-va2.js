@@ -1,4 +1,4 @@
-/* AndreuMatic VA extra (servicios, precios, legales, 404). Se fusiona en lang.js. */
+﻿/* AndreuMatic VA extra (servicios, precios, legales, 404). Se fusiona en lang.js. */
 window.AM_X1 = {
 pg_index_t: 'Problemes amb la informàtica? Tècnic informàtic a València | AndreuMatic',
 pg_index_d: 'Problemes amb la informàtica o la tecnologia? Servicis d’informàtica a València i rodalia: tècnic informàtic a domicili, +10 anys d’experiència. Sense sorpreses i amb garantia. WhatsApp: 654 225 831.',
@@ -53,7 +53,7 @@ sv_e6: '<h3>Web i correu empresa</h3><p>Caigudes, dominis, hosting, WordPress. E
 sv_e7: '<span class="tag">A MIDA</span><h3>Software a mida per al teu negoci</h3><p>Eixe procés que feu a mà, eixes dades que cal copiar d’un lloc a un altre… Ho automatitzem amb solucions a la vostra mida: menys hores perdudes, menys errors humans. Pressupost personalitzat després de diagnòstic i anàlisi de necessitats.</p><p><a class="link-more" href="index.html#contacto">Demanar diagnòstic →</a></p>',
 sv_e8: '<span class="tag">TOT CONNECTAT</span><h3>Integració de servicis i sistemes</h3><p>Facturació, correu, còpies de seguretat, web, CRM… Si cada sistema va per lliure, el negoci perd ritme. Els integrem perquè la informació fluïsca sola entre ells. Pressupost personalitzat després de diagnòstic i anàlisi de necessitats.</p><p><a class="link-more" href="index.html#contacto">Demanar diagnòstic →</a></p>',
 sv_band_h: 'Parlem del teu cas?',
-sv_band_p: 'Tria el teu servici o conta’ns-ho lliurement. Contestem hui. Telefona al <a href="tel:+34654225831">654 225 831</a> o escriu a <a href="mailto:andreumatic@gmail.com">andreumatic@gmail.com</a>.',
+sv_band_p: 'Tria el teu servici o conta’ns-ho lliurement. Contestem hui. Telefona al <a href="tel:+34654225831">654 225 831</a> o escriu a <a href="mailto:info@andreumatic.com">info@andreumatic.com</a>.',
 sv_band_wa: 'WhatsApp directe',
 sv_band_pre: 'Vore preus'
 };
@@ -103,7 +103,7 @@ window.AM_X4 = {
 pr_e2: 'Suport en remot',
 atc_lead: 'Parles amb qui ho arregla. Sense call centers ni 902.',
 atc_h1: '1. Canals',
-atc_p1: 'Telèfon i WhatsApp: <a class="link-more" href="tel:+34654225831">654 225 831</a> · Email: <a class="link-more" href="mailto:andreumatic@gmail.com">andreumatic@gmail.com</a>',
+atc_p1: 'Telèfon i WhatsApp: <a class="link-more" href="tel:+34654225831">654 225 831</a> · Email: <a class="link-more" href="mailto:info@andreumatic.com">info@andreumatic.com</a>',
 atc_h2: '2. Horari',
 atc_p2: 'Dilluns a divendres, de 9:00 a 19:00. Fora d’horari pots escriure’ns i et responem al següent dia laborable.',
 atc_h3: '3. Compromís de resposta',
@@ -112,7 +112,7 @@ atc_h4: '4. Zona de servici',
 atc_p4: 'València i rodalia a domicili. Fora de zona? Gran part es resol en remot.',
 av_lead: 'Qui som i baix quines regles funciona esta web.',
 av_h1: '1. Dades del titular',
-av_p1: 'Titular: Andreu Zaragozà i Arnàez · NIF: 48588243F<br>Domicili: Calle Mare Nostrum 6-4, 46930 Quart de Poblet (Valencia)<br>Contacte: <a class="link-more" href="tel:+34654225831">654 225 831</a> · <a class="link-more" href="mailto:andreumatic@gmail.com">andreumatic@gmail.com</a>',
+av_p1: 'Titular: Andreu Zaragozà i Arnàez · NIF: 48588243F<br>Domicili: Calle Mare Nostrum 6-4, 46930 Quart de Poblet (Valencia)<br>Contacte: <a class="link-more" href="tel:+34654225831">654 225 831</a> · <a class="link-more" href="mailto:info@andreumatic.com">info@andreumatic.com</a>',
 av_h2: '2. Objecte de la web',
 av_p2: 'Esta web informa dels nostres servicis i preus, i oferix canals de contacte. No permet contractar ni pagar online: tot servici es confirma directament amb el client per telèfon, email o WhatsApp.',
 av_h3: '3. Preus',
@@ -126,7 +126,7 @@ av_p6: 'Legislació espanyola. Per a qualsevol conflicte seran competents els ju
 pv_h1: 'Política de privacitat',
 pv_lead: 'Clar i sense lletra menuda, com tot lo nostre.',
 pv_r1: '1. Responsable',
-pv_p1: 'Andreu Zaragozà i Arnàez (AndreuMatic) · NIF 48588243F · <a class="link-more" href="mailto:andreumatic@gmail.com">andreumatic@gmail.com</a> · <a class="link-more" href="tel:+34654225831">654 225 831</a>',
+pv_p1: 'Andreu Zaragozà i Arnàez (AndreuMatic) · NIF 48588243F · <a class="link-more" href="mailto:info@andreumatic.com">info@andreumatic.com</a> · <a class="link-more" href="tel:+34654225831">654 225 831</a>',
 pv_r2: '2. Quines dades tractem',
 pv_p2: 'Només les que tu ens facilites en contactar (formulari, email, telèfon o WhatsApp): nom, telèfon, email i la descripció del teu problema. Esta web no té comptes ni analítica. El formulari usa la verificació anti-spam Cloudflare Turnstile, que no utilitza cookies de seguiment.',
 pv_r3: '3. Per a què i per què',
@@ -136,7 +136,7 @@ pv_p4: 'Només el necessari per a atendre’t i complir obligacions legals (p. e
 pv_r5: '5. Destinataris',
 pv_p5: 'No cedim dades a tercers, excepte obligació legal. Si ens escrius per WhatsApp, tingues en compte que Meta processa eixos missatges segons la seua pròpia política de privacitat.',
 pv_r6: '6. Els teus drets',
-pv_p6: 'Accés, rectificació, supressió, oposició, limitació i portabilitat: escriu-nos a <a class="link-more" href="mailto:andreumatic@gmail.com">andreumatic@gmail.com</a> i ho resolem. També pots reclamar davant l’Agència Espanyola de Protecció de Dades (aepd.es).',
+pv_p6: 'Accés, rectificació, supressió, oposició, limitació i portabilitat: escriu-nos a <a class="link-more" href="mailto:info@andreumatic.com">info@andreumatic.com</a> i ho resolem. També pots reclamar davant l’Agència Espanyola de Protecció de Dades (aepd.es).',
 ac_h1: 'Declaració d’accessibilitat',
 ac_lead: 'Esta web és per a tots. Si alguna cosa t’ho posa difícil, digue’ns-ho i ho arreglem.',
 ac_r1: '1. Compromís',
@@ -146,7 +146,7 @@ ac_p2: 'Textos alternatius en imatges, contrast reforçat, navegació completa p
 ac_r3: '3. Limitacions',
 ac_p3: 'Alguns continguts de tercers (p. ex. mapes o chats externs) poden no complir plenament estos criteris. Treballem a revisar-los i oferir alternatives.',
 ac_r4: '4. Contacte davant barreres',
-ac_p4: 'Si trobes alguna barrera d’accés, escriu-nos a <a class="link-more" href="mailto:andreumatic@gmail.com">andreumatic@gmail.com</a> o telefona al <a class="link-more" href="tel:+34654225831">654 225 831</a>. Responem en un màxim de 15 dies laborables.',
+ac_p4: 'Si trobes alguna barrera d’accés, escriu-nos a <a class="link-more" href="mailto:info@andreumatic.com">info@andreumatic.com</a> o telefona al <a class="link-more" href="tel:+34654225831">654 225 831</a>. Responem en un màxim de 15 dies laborables.',
 ac_rev: 'Última revisió: setembre de 2026.',
 en_lead: 'Ací no hi ha enviaments: hi ha servici a domicili, remot i arreplegada. Açò és lo que pots esperar.',
 en_h1: '1. Com es presta el servici',
@@ -156,7 +156,7 @@ en_p2: 'Els terminis són orientatius i es confirmen en contractar cada servici.
 en_h3: '3. Garantia',
 en_p3: '15 dies en el treball realitzat. No cobrix fallos de programes de tercers ni mal ús posterior.',
 en_h4: '4. Com reclamar',
-en_p4: 'Telefona’ns al <a class="link-more" href="tel:+34654225831">654 225 831</a>, escriu-nos a <a class="link-more" href="mailto:andreumatic@gmail.com">andreumatic@gmail.com</a> o per <a class="link-more" href="https://wa.me/34654225831?text=Hola%20AndreuMatic%2C%20quiero%20poner%20una%20reclamación">WhatsApp</a>. També tens a la teua disposició els fulls de reclamacions de la Generalitat Valenciana i la plataforma europea de resolució de litigis en línia: <a class="link-more" href="https://ec.europa.eu/consumers/odr">ec.europa.eu/consumers/odr</a>.',
+en_p4: 'Telefona’ns al <a class="link-more" href="tel:+34654225831">654 225 831</a>, escriu-nos a <a class="link-more" href="mailto:info@andreumatic.com">info@andreumatic.com</a> o per <a class="link-more" href="https://wa.me/34654225831?text=Hola%20AndreuMatic%2C%20quiero%20poner%20una%20reclamación">WhatsApp</a>. També tens a la teua disposició els fulls de reclamacions de la Generalitat Valenciana i la plataforma europea de resolució de litigis en línia: <a class="link-more" href="https://ec.europa.eu/consumers/odr">ec.europa.eu/consumers/odr</a>.',
 fof_h1: 'Vaja, açò s’ha trencat… però jo ho arregle.',
 fof_p: 'La pàgina no existix. Millor parlem directament.'
 };

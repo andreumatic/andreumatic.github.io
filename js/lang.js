@@ -1,4 +1,4 @@
-/* AndreuMatic ES/VA (piloto: solo index). El español es el HTML original;
+﻿/* AndreuMatic ES/VA (piloto: solo index). El español es el HTML original;
    aquí solo el valenciano. Sin commit a prod: prueba local. */
 (function(){
 var VA = {
@@ -137,9 +137,9 @@ fq6s: 'I la web / correu que s’ha caigut?',
 fq6a: 'Sí, resolem webs caigudes, dominis, hosting, correu i menuts canvis WordPress. Des de 40€. <a href="servicios.html#web">Vore detall</a>.',
 ct_eb: 'Parlem hui',
 ct_t: 'No et quedes amb el problema un altre dia més',
-ct_lead: 'Tria el teu servici o conta’ns-ho lliurement. Contestem hui. Telefona al <a href="tel:+34654225831">654 225 831</a> o escriu a <a href="mailto:andreumatic@gmail.com">andreumatic@gmail.com</a>.',
+ct_lead: 'Tria el teu servici o conta’ns-ho lliurement. Contestem hui. Telefona al <a href="tel:+34654225831">654 225 831</a> o escriu a <a href="mailto:info@andreumatic.com">info@andreumatic.com</a>.',
 form_h3: 'Escriu-nos',
-form_sub: 'I et contactem per a aclarir la situació.<br><em>Pau mental al teu món digital.</em>',
+form_sub: 'I et contactem per a aclarir la situació i recuperar la<br><em>Pau mental al teu món digital</em>',
 lb_nom: 'Nom',
 lb_tel: 'Telèfon',
 lb_msg: 'Què et passa?',
@@ -164,7 +164,7 @@ ph_nom: 'El teu nom',
 ph_msg: 'Ex.: El portàtil va molt lent des de fa mesos…',
 btn_submit: 'Enviar sol·licitud →',
 cta_wa2: 'Obrir WhatsApp ara',
-zone: 'o telefona directament · <a href="tel:+34654225831" style="color:#fff">654 225 831</a> · <a href="mailto:andreumatic@gmail.com" style="color:#fff">andreumatic@gmail.com</a><br>València i voltants · Dl–Dv 9:00–19:00',
+zone: 'o telefona directament · <a href="tel:+34654225831" style="color:#fff">654 225 831</a> · <a href="mailto:info@andreumatic.com" style="color:#fff">info@andreumatic.com</a><br>València i voltants · Dl–Dv 9:00–19:00',
 foot_tag: 'Pau mental al teu món digital',
 foot_zone: 'València i rodalia',
 foot_serv: 'Servicis',
