@@ -119,7 +119,7 @@ q_lead2: 'La nostra missió: que sentes <strong>pau mental al teu món digital.<
 q_ctawa: 'Escriu-nos per WhatsApp',
 q_zona: 'Zona de servici',
 q_zonap: 'València · Paterna · Torrent · Mislata · Burjassot · Quart de Poblet · Aldaia · Manises · Paiporta · Alboraia · Xirivella · Alaquàs',
-q_znota: 'Desplaçament <strong>des de 15€</strong> a València i rodalia (es confirma abans).',
+q_znota: 'Desplaçament des de 15€ a València i rodalia.*',
 q_remoto: 'Fora de zona? Gran part es resol en <strong>remot</strong>.',
 q_llamar: 'Telefonar: 654 225 831',
 f_t: 'Preguntes que ens fan abans de telefonar',
