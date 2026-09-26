@@ -218,7 +218,7 @@ const y=document.getElementById('y'); if(y) y.textContent=new Date().getFullYear
       if(!st||document.documentElement.lang!==lg){cd.classList.remove('typing');if(done)done();return;}
       if(ph===0){ct++;st.textContent=title.slice(0,ct);if(ct>=title.length){ph=1;}}
       else{cb++;sb.textContent=body.slice(0,cb);if(cb>=body.length){setTimeout(function(){cd.classList.remove('typing');if(done)done();},400);return;}}
-        setTimeout(type,18);
+        setTimeout(type,28);
     })();
   }
   function rotateC(){
