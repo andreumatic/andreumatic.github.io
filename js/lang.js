@@ -118,7 +118,7 @@ q_lead1: 'Més de 10 anys en informàtica i tecnologia. Treballem a València i 
 q_lead2: 'La nostra missió: que sentes <strong>pau mental al teu món digital.</strong>',
 q_ctawa: 'Escriu-nos per WhatsApp',
 q_zona: 'Zona de servici',
-q_zonap: 'València · Paterna · Torrent · Mislata · Burjassot · Quart de Poblet · Aldaia · Manises · Paiporta · Alboraia · Xirivella · Alaquàs',
+q_zonap: 'València · Paterna · Torrent · Mislata · Burjassot · Quart de Poblet · Aldaia · Manises · Riba-roja de Túria · Paiporta · Alboraia · Xirivella · Alaquàs · Catarroja · Massanassa · Alfafar · Benetússer · Sedaví · Picanya · Godella · Rocafort · Tavernes Blanques · Montcada · L’Eliana · La Pobla de Vallbona · Bétera · Picassent · Silla',
 q_znota: 'Desplaçament des de 15€ a València i rodalia.*',
 q_remoto: 'Fora de zona? Gran part es resol en <strong>remot</strong>.',
 q_llamar: 'Telefonar: 654 225 831',
