@@ -151,7 +151,7 @@ p.lead{color:var(--muted);font-size:16.5px;max-width:66ch;margin-bottom:8px}
 .step h3{margin:6px 0 8px;font-size:17px}
 .step p{font-size:14.5px;color:rgba(244,238,221,.85)}
 /* split */
-.split{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:26px;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:0;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line)}
 .split>div{padding:28px}
 .split .part{background:#fff}
 .split .biz{background:var(--teal);color:var(--cream)}
@@ -302,7 +302,7 @@ a.huecos{text-decoration:none;cursor:pointer}
 .rating-line .muted,.rating-line .muted a{color:var(--muted);font-size:13px}
 .zona-note{margin-top:8px;font-size:14px;color:var(--muted)}
 .zona-note strong{color:var(--teal)}
-.fine-print{font-size:9px;color:#a89c83;margin-top:10px}
+.card p.fine-print{font-size:9px;color:#a89c83;margin-top:10px}
 .form-card{background:var(--card);color:var(--ink);border-radius:var(--radius);padding:26px 24px;max-width:560px;margin:26px auto 0;text-align:left;box-shadow:var(--shadow)}
 .form-card h3{color:var(--teal);font-size:19px;margin-bottom:4px}
 .form-sub{font-size:13.5px;color:var(--muted);margin-bottom:16px}
