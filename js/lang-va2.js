@@ -54,7 +54,6 @@ sv_e7: '<span class="tag">A MIDA</span><h3>Software a mida per al teu negoci</h3
 sv_e8: '<span class="tag">TOT CONNECTAT</span><h3>Integració de servicis i sistemes</h3><p>Facturació, correu, còpies de seguretat, web, CRM… Si cada sistema va per lliure, el negoci perd ritme. Els integrem perquè la informació fluïsca sola entre ells. Pressupost personalitzat després de diagnòstic i anàlisi de necessitats.</p><p><a class="link-more" href="index.html#contacto">Demanar diagnòstic →</a></p>',
 sv_band_h: 'Parlem del teu cas?',
 sv_band_p: 'Tria el teu servici o conta’ns-ho lliurement. Contestem hui. Telefona al <a href="tel:+34654225831">654 225 831</a> o escriu a <a href="mailto:info@andreumatic.com">info@andreumatic.com</a>.',
-sv_band_wa: 'WhatsApp directe',
 sv_band_pre: 'Vore preus'
 };
 window.AM_X3 = {

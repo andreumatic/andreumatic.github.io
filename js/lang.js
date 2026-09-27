@@ -53,7 +53,7 @@ dp3: '<strong>“No sé què comprar i tinc por que m’enganyen”</strong>Port
 dp4: '<strong>“Estrene ordinador i és un caos passar-ho tot”</strong>Programes, contrasenyes, correu, fotos… I si es perd alguna cosa pel camí?',
 dp5: '<strong>“El wifi, la impressora, la càmera… fallen quan volen”</strong>A casa o al negoci, quan falla, tot es para.',
 dp6: '<strong>“Vull algú de confiança, no un 902”</strong>Parlar amb un equip que ve, mira, resol i t’explica amb calma. Això és El Teu Tècnic de Capçalera.',
-d_ctawa: 'Conta’ns el teu cas per WhatsApp',
+
 d_ctapre: 'Vore preus',
 v_eb: 'Proposta de valor · per què AndreuMatic',
 v_t: 'Un equip tècnic, no un call center',
@@ -66,22 +66,22 @@ vc3t: 'Sense sorpreses',
 vc3p: 'Sabràs lo que pagues abans de començar. Diagnòstic des de 25€, gratis si repares.',
 vc4t: 'Garantia 15 dies',
 vc4p: 'En el treball realitzat. I si necessitem tornar hui mateix, suplement clar: +15€.',
-s_eb: 'Servicis · lo primordial',
-s_t: 'Què podem resoldre per tu?',
-s_lead: 'Açò és lo que més ens demanen. Toca cada un per a vore en detall què inclou. <strong>Els preus estan a banda, en una pàgina clara i sense lletra menuda.</strong>',
-s1t: 'PC lent → ràpid',
-s1p: 'Neteja, optimització i arranc ràpid. Torna a gaudir del teu ordinador.',
-s2t: 'Recuperar dades i fotos',
-s2p: 'Discos, USB, mòbils. Actue ràpid per a salvar lo important.',
-s3t: 'No t’equivoques en la compra',
-s3p: 'T’assessorem abans de comprar i muntem el teu PC a mida si ho necessites.',
-s4t: 'Estrena PC sense perdre res',
-s4p: 'Mude programes, archius i contrasenyes al teu equip nou. Zero estrés.',
-s5t: 'Seguretat i casa connectada',
-s5p: 'Contrasenyes, còpies, antivirus, wifi, càmeres i smart home bàsic.',
-s6t: 'El Teu Tècnic de Capçalera',
-s6p: 'Dubtes del dia a dia en PC, mòbil o apps. Remot o a casa, explicat amb calma.',
-incluye: 'Què inclou →',
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 pt_t: 'Particulars',
 pt_p: 'A casa, en remot o amb arreplegada a domicili. Ideal si vols oblidar-te del tema tècnic per a sempre.',
 pt_li1: 'Visita i diagnòstic a casa',
@@ -94,7 +94,7 @@ bt_li1: 'Urgències en el dia',
 bt_li2: 'Lloc nou llest el primer dia',
 bt_li3: 'Backups + IT extern mensual',
 bt_btn: 'Vore servicis empreses',
-s_precios: 'Vore tots els preus →',
+
 c_eb: 'Així de fàcil',
 c_t: 'De “quin agobi” a “ja funciona” en 3 passos',
 st1t: '1. Escriu-nos',
@@ -116,7 +116,7 @@ q_eb: 'Qui som',
 q_t: 'Som AndreuMatic. El teu equip tècnic de capçalera.',
 q_lead1: 'Més de 10 anys en informàtica i tecnologia. Treballem a València i rodalia. Som l’equip que agarra el telèfon, va a ta casa i es queda fins que tot funciona.',
 q_lead2: 'La nostra missió: que sentes <strong>pau mental al teu món digital.</strong>',
-q_ctawa: 'Escriu-nos per WhatsApp',
+
 q_zona: 'Zona de servici',
 q_zonap: 'València · Paterna · Torrent · Mislata · Burjassot · Quart de Poblet · Aldaia · Manises · Riba-roja de Túria · Paiporta · Alboraia · Xirivella · Alaquàs · Catarroja · Massanassa · Alfafar · Benetússer · Sedaví · Picanya · Godella · Rocafort · Tavernes Blanques · Montcada · L’Eliana · La Pobla de Vallbona · Bétera · Picassent · Silla',
 q_znota: 'Desplaçament des de 15€ a València i rodalia.*',
@@ -163,13 +163,13 @@ sv_otro: 'Un altre tema',
 ph_nom: 'El teu nom',
 ph_msg: 'Ex.: El portàtil va molt lent des de fa mesos…',
 btn_submit: 'Enviar sol·licitud →',
-cta_wa2: 'Obrir WhatsApp ara',
-zone: 'o telefona directament · <a href="tel:+34654225831" style="color:#fff">654 225 831</a> · <a href="mailto:info@andreumatic.com" style="color:#fff">info@andreumatic.com</a><br>València i voltants · Dl–Dv 9:00–19:00',
+
+
 foot_tag: 'Pau mental al teu món digital',
 foot_zone: 'València i rodalia',
 foot_serv: 'Servicis',
 foot_pre: 'Preus',
-foot_iva: '· Avís: preus IVA inclòs excepte indicació',
+
 foot_cond: 'Condicions i servicis',
 foot_aviso: 'Avís legal',
 foot_priv: 'Privacitat',

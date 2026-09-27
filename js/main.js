@@ -155,7 +155,7 @@ const y=document.getElementById('y'); if(y) y.textContent=new Date().getFullYear
   var bi=0,ci=0,del=false;
   function isVa(){return document.documentElement.lang==='ca';}
   function finale(){
-    t.innerHTML='<div class="term-finale"><img src="assets/logo-a.png" alt="" style="width:130px;display:block;margin:4px auto;border-radius:10px"><div class="term-tag" id="term-tag"></div></div>';
+    t.innerHTML='<div class="term-finale"><img src="assets/logo-a.jpg" alt="" style="width:130px;display:block;margin:4px auto;border-radius:10px"><div class="term-tag" id="term-tag"></div></div>';
     var tag=document.getElementById('term-tag'),tt=isVa()?TAG_VA:TAG_ES,ti=0;
     (function typeTag(){ti++;tag.textContent=tt.slice(0,ti);if(ti<tt.length){setTimeout(typeTag,55);}else{setTimeout(function(){t.textContent='';bi=0;ci=0;del=false;setTimeout(tick,700);},4000);}})();
   }
