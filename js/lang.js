@@ -105,7 +105,7 @@ st3t: '3. Calma digital',
 st3p: 'Ho deixem funcionant, amb garantia de 15 dies i explicat sense presses. Tu a la teua.',
 o_eb: 'Tranquil·litat real',
 o_t: 'Lo que més valoren: que torne a respirar',
-o_rate: '★★★★★ <b>4,8</b> · 6 ressenyes a Google · <span class="muted"><a href="https://g.page/r/Cfi9FXQqK1T3EBM/review" id="gmb-link">deixa’ns la teua ací</a></span>',
+o_rate: '★★★★★ <b>5,0</b> · 6 ressenyes a Google · <span class="muted"><a href="https://g.page/r/Cfi9FXQqK1T3EBM/review" id="gmb-link">deixa’ns la teua ací</a></span>',
 
 
 
