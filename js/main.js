@@ -140,7 +140,7 @@ const y=document.getElementById('y'); if(y) y.textContent=new Date().getFullYear
   if(!line||!dot||!line.getTotalLength)return;
   var len=line.getTotalLength();
   var labs=document.querySelectorAll('.scope-label span');
-  function fr(ts){var p=(((ts||0)/3200)%1+1)%1;try{var pt=line.getPointAtLength(p*len);dot.setAttribute('cx',pt.x.toFixed(1));dot.setAttribute('cy',pt.y.toFixed(1));}catch(_){}
+  function fr(ts){var p=(((ts||0)/5200)%1+1)%1;try{var pt=line.getPointAtLength(p*len);dot.setAttribute('cx',pt.x.toFixed(1));dot.setAttribute('cy',pt.y.toFixed(1));}catch(_){}
   var zone=p<0.34?0:(p<0.67?1:2);for(var i=0;i<labs.length;i++){labs[i].classList.toggle('lit',i===zone);}
   window.requestAnimationFrame(fr);}
   window.requestAnimationFrame(fr);
