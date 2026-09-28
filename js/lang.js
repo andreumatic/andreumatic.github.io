@@ -105,7 +105,7 @@ st3t: '3. Calma digital',
 st3p: 'Ho deixem funcionant, amb garantia de 15 dies i explicat sense presses. Tu a la teua.',
 o_eb: 'Tranquil·litat real',
 o_t: 'Lo que més valoren: que torne a respirar',
-o_rate: '★★★★★ <b>4,8</b> · 5 ressenyes a Google · <span class="muted"><a href="https://g.page/r/Cfi9FXQqK1T3EBM/review" id="gmb-link">deixa’ns la teua ací</a></span>',
+o_rate: '★★★★★ <b>4,8</b> · 6 ressenyes a Google · <span class="muted"><a href="https://g.page/r/Cfi9FXQqK1T3EBM/review" id="gmb-link">deixa’ns la teua ací</a></span>',
 
 
 
@@ -118,6 +118,7 @@ t4s: 'Recuperació de dades',
 t5p: '“Excel·lent experiència. Destaca per la seua gran professionalitat, eficàcia i tracte al client. És difícil trobar un servici tan ben estructurat i amb tant de compromís amb la qualitat. Es nota la dedicació.”',
 t5n: 'P SEO',
 t5s: 'Ressenya de Google',
+t6p: '“Professionals, sempre disponible, molt atents, bon preu. No dubteu, són els millors.”',
 q_eb: 'Qui som',
 q_t: 'Som AndreuMatic. El teu equip tècnic de capçalera.',
 q_lead1: 'Més de 10 anys en informàtica i tecnologia. Treballem a València i rodalia. Som l’equip que agarra el telèfon, va a ta casa i es queda fins que tot funciona.',
