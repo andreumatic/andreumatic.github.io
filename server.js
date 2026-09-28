@@ -114,6 +114,22 @@ async function handleApiContact(req, res) {
     if (!phoneOk) {
       return sendJson(res, 400, { ok: false, message: 'Revisa el teléfono: usa 9 dígitos (ej. 600 123 123) o con prefijo +34.' });
     }
+    if (process.env.VERIPHONE_API_KEY) {
+      let e164 = digits;
+      if (/^[6789]\d{8}$/.test(digits)) e164 = '+34' + digits;
+      else if (/^0034/.test(digits)) e164 = '+34' + digits.slice(4);
+      else if (!/^\+/.test(digits)) e164 = '+' + digits;
+      try {
+        const vr = await fetch('https://api.veriphone.io/v3/verify?phone=' + encodeURIComponent(e164) + '&default_country=ES', {
+          headers: { Authorization: 'Bearer ' + process.env.VERIPHONE_API_KEY },
+          signal: AbortSignal.timeout(6000),
+        });
+        const vd = await vr.json().catch(() => ({}));
+        if (vd.status === 'success' && vd.phone_valid === false) {
+          return sendJson(res, 400, { ok: false, message: 'Ese teléfono no existe. Revisa el número indicado.' });
+        }
+      } catch (e) { console.error('Veriphone error (se permite el envío):', e); }
+    }
     if (canal === 'email' && !emailOk) {
       return sendJson(res, 400, { ok: false, message: 'Para contactarte por email, indícanos un email válido.' });
     }

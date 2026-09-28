@@ -105,13 +105,17 @@ st3t: '3. Calma digital',
 st3p: 'Ho deixem funcionant, amb garantia de 15 dies i explicat sense presses. Tu a la teua.',
 o_eb: 'Tranquil·litat real',
 o_t: 'Lo que més valoren: que torne a respirar',
-o_rate: '★★★★★ <b>5,0</b> · 3 ressenyes en la web · <span class="muted">Google Business pròximament — <a href="#" id="gmb-link">deixa’ns la teua ressenya ací</a></span>',
-t1p: '“Pensava que havia perdut les fotos d’anys. M’ho van explicar tot amb calma i les van recuperar. Vaig plorar d’alleujament.”',
-t1c: '<b>Carmen · València</b> — Recuperació de dades',
-t2p: '“El PC anava a pedals i ara vola. Em van donar preu abans i en una vesprada llest. Per fi un equip que parla clar.”',
-t2c: '<b>Javi · València</b> — Optimització PC',
-t3p: '“Ens van deixar els 3 llocs nous funcionant el primer dia i ens porten les còpies. Zero parades des d’aleshores.”',
-t3c: '<b>Autònom · Paterna</b> — Empresa / IT extern',
+o_rate: '★★★★★ <b>4,8</b> · 5 ressenyes a Google · <span class="muted"><a href="https://g.page/r/Cfi9FXQqK1T3EBM/review" id="gmb-link">deixa’ns la teua ací</a></span>',
+
+
+
+
+
+
+t4p: '“Si teniu dubtes no en tingueu!!! Un amic em va recomanar el servici d’Andreu per a recuperar unes dades del meu ordinador antic i a més necessitava muntar un pc gaming. Tot ha ixit excel·lent i s’ha adaptat a la meua situació econòmica.”',
+t4c: '<b>Nam B</b> — Recuperació de dades',
+t5p: '“Excel·lent experiència. Destaca per la seua gran professionalitat, eficàcia i tracte al client. És difícil trobar un servici tan ben estructurat i amb tant de compromís amb la qualitat. Es nota la dedicació.”',
+t5c: '<b>P SEO</b> — Google',
 q_eb: 'Qui som',
 q_t: 'Som AndreuMatic. El teu equip tècnic de capçalera.',
 q_lead1: 'Més de 10 anys en informàtica i tecnologia. Treballem a València i rodalia. Som l’equip que agarra el telèfon, va a ta casa i es queda fins que tot funciona.',

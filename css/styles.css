@@ -158,6 +158,11 @@ p.lead{color:var(--muted);font-size:16.5px;max-width:66ch;margin-bottom:8px}
 .biz .check li::before{color:var(--mint)}
 /* testimonials */
 .testi{background:#fff;border-radius:var(--radius);padding:22px;border:1px solid var(--line)}
+.testi-row{display:flex;overflow:hidden;margin-top:20px}
+.testi-row .testi{flex:0 0 min(340px,85%);margin-right:16px;animation:testi-scroll 28s linear infinite}
+@keyframes testi-scroll{to{transform:translateX(calc(-200% - 32px))}}
+.testi-row:hover .testi{animation-play-state:paused}
+@media (prefers-reduced-motion: reduce){.testi-row{overflow-x:auto}.testi-row .testi{animation:none}}
 .testi .stars{color:var(--amber);letter-spacing:2px;margin-bottom:8px}
 .testi p{font-size:15px}
 .testi cite{display:block;margin-top:12px;font-style:normal;font-size:13px;color:var(--muted)}
