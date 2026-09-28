@@ -113,9 +113,11 @@ o_rate: '★★★★★ <b>4,8</b> · 5 ressenyes a Google · <span class="mute
 
 
 t4p: '“Si teniu dubtes no en tingueu!!! Un amic em va recomanar el servici d’Andreu per a recuperar unes dades del meu ordinador antic i a més necessitava muntar un pc gaming. Tot ha ixit excel·lent i s’ha adaptat a la meua situació econòmica.”',
-t4c: '<b>Nam B</b> — Recuperació de dades',
+t4n: 'Nam B',
+t4s: 'Recuperació de dades',
 t5p: '“Excel·lent experiència. Destaca per la seua gran professionalitat, eficàcia i tracte al client. És difícil trobar un servici tan ben estructurat i amb tant de compromís amb la qualitat. Es nota la dedicació.”',
-t5c: '<b>P SEO</b> — Google',
+t5n: 'P SEO',
+t5s: 'Ressenya de Google',
 q_eb: 'Qui som',
 q_t: 'Som AndreuMatic. El teu equip tècnic de capçalera.',
 q_lead1: 'Més de 10 anys en informàtica i tecnologia. Treballem a València i rodalia. Som l’equip que agarra el telèfon, va a ta casa i es queda fins que tot funciona.',
