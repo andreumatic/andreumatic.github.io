@@ -38,10 +38,11 @@ function main() {
   const end = new Date(target); end.setHours(CFG.WORK_END_H, 0, 0, 0);
   const busy = cal.getEvents(start, end);
   const ranges = busy.map(function (e) { return [e.getStartTime().getTime(), e.getEndTime().getTime()]; });
-  // Si el día ya tiene bloqueos propios (versión anterior) u otros eventos, no duplicar
-  const own = busy.filter(function (e) { return (e.getDescription() || '').indexOf(CFG.MARK) !== -1; });
-  if (own.length > 0) return;
-  if (busy.length > (CFG.WORK_END_H - CFG.WORK_START_H) - CFG.MIN_FREE_PER_DAY) return;
+  // Los bloqueos ya existentes (propios, modificados o citas reales) cuentan
+  // como ocupados: se evita su hora y se completa hasta el máximo en otras.
+  const own = busy.filter(function (e) { return (e.getDescription() || '').indexOf(CFG.MARK) !== -1; }).length;
+  const need = Math.max(0, CFG.MAX_BLOCKS_PER_DAY - Math.min(own, CFG.MAX_BLOCKS_PER_DAY));
+  if (need === 0) return;
   const free = [];
   for (let h = CFG.WORK_START_H; h < CFG.WORK_END_H; h++) {
     const s = new Date(target); s.setHours(h, 0, 0, 0);
@@ -53,7 +54,7 @@ function main() {
     const tmp = free[i]; free[i] = free[j]; free[j] = tmp;
   }
   let n = 0;
-  while (free.length - n > CFG.MIN_FREE_PER_DAY && n < CFG.MAX_BLOCKS_PER_DAY && n < free.length) {
+  while (free.length - n > CFG.MIN_FREE_PER_DAY && n < need && n < free.length) {
     const s = free[n];
     // Re-comprobación justo antes de crear (por si entró una reserva real)
     const clash = cal.getEvents(s, new Date(s.getTime() + 36e5));
