@@ -56,7 +56,7 @@
     });
     if (window.amRefreshDynamic) { /* nada dinámico con claves aquí */ }
   }
-  var SLOTS_URL = 'https://script.google.com/macros/s/AKfycbxHHfAiR6tih5LFGH9QDTeQ0L7b7YJlOed6cXB9C4z-YQ-QBpUY1WV_Sr00w2dDmSi-/exec';
+  var SLOTS_URL = 'https://script.google.com/macros/s/AKfycbw8_uBFXyg1ysg5T8o4gQp0XDXacEJngS6EGFSWIi2J1PF1un9LdbDvI5u0kfKA4ll6/exec';
   var CACHE_KEY = 'am-slots-v1', CACHE_TTL = 10 * 60 * 1000;
   function readCache(){ try { var c = JSON.parse(localStorage.getItem(CACHE_KEY)); if (c && c.days && (Date.now() - c.ts) < CACHE_TTL) return c.days; } catch (_) {} return null; }
   function writeCache(days){ try { localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), days: days })); } catch (_) {} }
