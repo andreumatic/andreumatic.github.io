@@ -140,7 +140,7 @@ fq3a: 'No. T’ho expliquem amb paraules normals i sense presses. La majoria rep
 fq4s: 'I si no té arregle?',
 fq4a: 'T’ho diem clar i no et cobrem de més. Et proposem l’alternativa més barata: recuperar dades, equip nou, etc.',
 fq5s: 'Fas factura per a empreses / autònoms?',
-fq5a: 'Sí. Treballe amb particulars i empreses: urgències, llocs nous, backups i iguala mensual.',
+fq5a: 'Sí. Treballem amb particulars i empreses: urgències, llocs nous, backups i iguala mensual.',
 fq6s: 'I la web / correu que s’ha caigut?',
 fq6a: 'Sí, resolem webs caigudes, dominis, hosting, correu i menuts canvis WordPress. Des de 40€. <a href="servicios.html#web">Vore detall</a>.',
 ct_eb: 'Parlem hui',
