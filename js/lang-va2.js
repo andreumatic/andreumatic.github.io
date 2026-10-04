@@ -183,7 +183,7 @@ pv_p6: 'Accés, rectificació, supressió, oposició, limitació i portabilitat:
 pv_r7: '7. Encarregats del tractament',
 pv_p7: 'Per a prestar-te el servei usem: <b>Resend</b> (enviament dels emails de contacte) i <b>Cloudflare</b> (seguretat i anti-spam de la web). Només tracten les teues dades per a això i baix les nostres instruccions.',
 pv_r8: '8. Emmagatzematge local (sense cookies)',
-pv_p8: 'Esta web no usa cookies de seguiment ni analítica. Només guarda en el teu propi navegador l’idioma triat i una memòria cau temporal de disponibilitat (10 minuts). Pots esborrar-los quan vullgues des del teu navegador.',
+pv_p8: 'Esta web no usa cookies de seguiment ni analítica. Només guarda en el teu propi navegador l’idioma triat i una memòria cau temporal de disponibilitat (10 minuts). Les tipografies es serveixen des del nostre propi domini, sense connexions a tercers. Pots esborrar-los quan vullgues des del teu navegador.',
 en_h5: '5. Dret de desistiment',
 en_p5: 'En contractar fora d’establiment (a ton domicili) tens 14 dies naturals per a desistir sense justificar. No s’aplica si el servei ja s’ha prestat per complet amb el teu consentiment o si vas demanar una reparació urgent immediata. Per a exercir-lo, escriu-nos a <a class="link-more" href="mailto:info@andreumatic.com">info@andreumatic.com</a>.'
 };
