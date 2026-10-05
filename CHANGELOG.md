@@ -3,6 +3,13 @@
 Cada cambio es una versión nueva (commit + tag). Base: copia de
 `ANDREUMATIC-WEB-PUB` sin `.git`/`node_modules`.
 
+## v1.16 — 2026-10-05
+- Lote SEO: "mantenimiento informático" (meta, quiénes somos, FAQ,
+  servicios, precios, 4 landings), "técnico informático en [ciudad]"
+  y "empresa informática en [ciudad]" (landings + FAQs + JSON-LD),
+  "ciberseguridad" (artículo 7, meta, knowsAbout), canonicals en 5
+  legales, alt de marca con keywords. ES+VA.
+
 ## v1.15 — 2026-10-05
 - Servicios hero: texto estira (`flex:1`) y logo a la derecha
   (`margin-left:auto`), centrado vertical ya existente. CSS rev a
