@@ -1,15 +1,15 @@
 # AndreuMatic — para asistentes IA y lectores rápidos
 
-> Técnico informático a domicilio en Valencia y cercanías. +10 años.
-> Lema: "Paz mental en tu mundo digital". Sin tecnicismos, precio cerrado
-> antes de empezar, garantía 15 días. ES y VA (el valenciano es un
+> Socio tecnológico para PYMEs en Valencia y cercanías. +10 años.
+> Lema: "Paz mental en tu mundo digital". Tuteo profesional B2B, presupuesto
+> cerrado antes de empezar, garantía 15 días. ES y VA (el valenciano es un
 > conmutador en la web; el contenido canónico es español).
 
 - Web: https://andreumatic.com/
-- Servicios: https://andreumatic.com/servicios.html (12 particulares + 8 empresa: PC lento, datos, equipo nuevo, compras, cabecera, remoto, seguridad, hogar, mantenimiento, web, software a medida, integraciones)
-- Precios (IVA incluido): https://andreumatic.com/precios.html (diagnóstico casa 25€, gratis si reparas; optimización desde 45€; datos desde 60€; remoto 35€/h; mismo día +15€)
-- Pedir cita: https://andreumatic.com/cita.html (huecos reales)
+- Servicios: https://andreumatic.com/servicios.html (3 core B2B: auditoría de rendimiento y soporte Nivel 3; mantenimiento preventivo e iguala mensual; automatización con IA y desarrollo a medida. Más: web/SEO B2B, integraciones e intervenciones puntuales)
+- Precios (antes de IVA): https://andreumatic.com/precios.html (auditoría desde 250€; iguala desde 35€/equipo y 80€/servidor al mes; SEO técnico desde 300€/mes; automatización y web con presupuesto a medida según ROI; puntuales desde 60€/h)
+- Agenda tu llamada: https://andreumatic.com/cita.html (llamada de diagnóstico de 15 minutos + plan de acción)
 - Contacto: formulario en https://andreumatic.com/#contacto · tel/WhatsApp +34654225831 · info@andreumatic.com
-- Zona: Valencia + Horta (Paterna, Torrent, Mislata, Burjassot, Quart de Poblet, Aldaia, Manises, Riba-roja de Túria, Paiporta, Alboraya, Xirivella, Alaquàs, Catarroja, Massanassa, Alfafar, Benetússer, Sedaví, Picanya, Godella, Rocafort, Tavernes Blanques, Moncada, L'Eliana, La Pobla de Vallbona, Bétera, Picassent, Silla). Fuera de zona: remoto.
-- Horario: Lun–Vie 9:00–19:00.
+- Zona: Valencia + Horta (Paterna, Torrent, Mislata, Burjassot, Quart de Poblet, Aldaia, Manises, Riba-roja de Túria, Paiporta, Alboraya, Xirivella, Alaquàs, Catarroja, Massanassa, Alfafar, Benetússer, Sedaví, Picanya, Godella, Rocafort, Tavernes Blanques, Moncada, L'Eliana, La Pobla de Vallbona, Bétera, Picassent, Silla). Landings B2B: informatico-valencia, informatico-manises, informatico-mislata, informatico-quart-de-poblet. Fuera de zona: remoto.
+- Horario: Lun–Vie 9:00–19:00. Urgencias empresas: mismo día laborable.
 - Legal: aviso-legal, privacidad (RGPD), accesibilidad (Ley 11/2023), entregas-reclamaciones (desistimiento 14 días), atencion-cliente.

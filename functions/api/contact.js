@@ -110,7 +110,7 @@ export async function onRequestPost({ request, env }) {
   const mensaje = String(body.mensaje || '').trim().slice(0, MAX_LEN);
   const canal = String(body.canal || 'email').trim().replace(/[\r\n]+/g, ' ').slice(0, 20);
   const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
-  const SERVICIOS = {'pc-lento':'PC lento','datos':'Recuperar datos','mudanza':'Equipo nuevo','compras':'Asesoría de compra','cabecera':'Técnico de cabecera','remoto':'Soporte remoto','seguridad':'Seguridad digital','hogar':'Smart home / wifi','mantenimiento':'Mantenimiento','web':'Web / correo','software':'Software a medida','integracion':'Integración','empresa':'Empresa / negocio','otro':'Otro tema'};
+  const SERVICIOS = {'pc-lento':'Auditoría / problema complejo','datos':'Recuperar datos empresa','mudanza':'Puesto nuevo / equipo','compras':'Asesoría de compra','cabecera':'Iguala mensual','remoto':'Soporte remoto','seguridad':'Seguridad y backups','hogar':'Red / wifi oficina','mantenimiento':'Mantenimiento preventivo','web':'Web / correo empresa','software':'Automatización a medida (IA)','integracion':'Integración de sistemas','empresa':'Urgencia empresa','otro':'Otro tema'};
   const servicio = SERVICIOS[String(body.servicio || '')] || '';
   if (canal === 'email' && !emailOk) {
     return j({ ok: false, message: 'Para contactarte por email, indícanos un email válido.' }, 400);
