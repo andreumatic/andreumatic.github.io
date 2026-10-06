@@ -22,6 +22,10 @@ Cada cambio es una versión nueva (commit + tag). Base: copia de
 - Marca visible en móvil a 13px; oculta solo ≤340px (medido: cabe
   a 360px). `index.html` en rev `1.44`.
 
+## v1.21 — 2026-10-06
+- Rev CSS `1.45` unificado en las 14 páginas (evita caché rancia
+  tras cambios de CSS).
+
 ## v1.16 — 2026-10-05
 - Lote SEO: "mantenimiento informático" (meta, quiénes somos, FAQ,
   servicios, precios, 4 landings), "técnico informático en [ciudad]"
