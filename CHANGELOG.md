@@ -3,6 +3,19 @@
 Cada cambio es una versión nueva (commit + tag). Base: copia de
 `ANDREUMATIC-WEB-PUB` sin `.git`/`node_modules`.
 
+## v1.17 — 2026-10-06
+- Header móvil: texto de marca oculto ≤560px (queda logo-icono).
+  Rev CSS unificado a `v=1.43` en las 14 páginas.
+
+## v1.18 — 2026-10-06
+- Servicios móvil (≤900px): badge-logo del hero oculto (era el
+  caption "AndreuMatic" flotando sobre las tarjetas). Escritorio
+  intacto. `servicios.html` en rev `1.44`.
+
+## v1.19 — 2026-10-06
+- Pills móvil uniformes (≤560px): 12.5px, min-height 52px y texto
+  centrado → 12 globos idénticos en 6×2. Sin tocar textos.
+
 ## v1.16 — 2026-10-05
 - Lote SEO: "mantenimiento informático" (meta, quiénes somos, FAQ,
   servicios, precios, 4 landings), "técnico informático en [ciudad]"
