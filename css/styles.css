@@ -408,11 +408,12 @@ footer a:hover{color:var(--amber)}
   .header-cta .call-icon{width:40px;height:40px;flex-basis:40px}
   .lang-sel .lang-name,.lang-sel .lang-flag{display:none}
   .brand{font-size:15px}
-  /* En móvil el texto de marca no cabe: queda el logo-icono */
-  .brand b{display:none}
+  /* En móvil la marca vuelve pero pequeña */
+  .brand b{font-size:13px}
   .hero{padding:40px 0 32px}
   .hero-points{grid-template-columns:repeat(2,1fr)}
-  .hero-points span,.hero-points a{font-size:12.5px;padding:6px 8px;min-height:52px;display:flex;align-items:center;justify-content:center;line-height:1.25}
+  .hero-points span,.hero-points a{font-size:11.5px;padding:5px 8px;min-height:44px;display:flex;align-items:center;justify-content:center;line-height:1.25;border-width:1px;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+  .hero h1{font-size:30px}
   .hero-ctas .btn{width:100%;text-align:center;white-space:normal}
   .hero-trust{gap:10px;font-size:13px}
   .split>div{padding:22px 18px}
@@ -420,6 +421,10 @@ footer a:hover{color:var(--amber)}
   .card-slim{padding:10px}
   /* Tablas de precios con scroll horizontal en vez de romper la página */
   .price-table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+}
+/* En pantallas muy pequeñas la marca no cabe ni en pequeño */
+@media(max-width:340px){
+  .brand b{display:none}
 }
 
 /* ===== EFECTOS PROVISIONALES fx/efectos (reversible: borrar este bloque + bloque JS) ===== */
