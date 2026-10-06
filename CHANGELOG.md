@@ -16,6 +16,12 @@ Cada cambio es una versión nueva (commit + tag). Base: copia de
 - Pills móvil uniformes (≤560px): 12.5px, min-height 52px y texto
   centrado → 12 globos idénticos en 6×2. Sin tocar textos.
 
+## v1.20 — 2026-10-06
+- Hero móvil reequilibrado: globos discretos (11.5px, 44px, borde
+  fino, sombra suave) y H1 a 30px para que mande el titular.
+- Marca visible en móvil a 13px; oculta solo ≤340px (medido: cabe
+  a 360px). `index.html` en rev `1.44`.
+
 ## v1.16 — 2026-10-05
 - Lote SEO: "mantenimiento informático" (meta, quiénes somos, FAQ,
   servicios, precios, 4 landings), "técnico informático en [ciudad]"
