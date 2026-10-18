@@ -82,9 +82,10 @@ window.AM_LIMITE = {
   st.textContent =
     '.am-limite{position:fixed;inset:0;z-index:2147483000;display:flex;align-items:flex-start;' +
     'justify-content:center;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:26px 20px;' +
-    fondo + ';color:#F4EEDD;font:16px/1.55 "Work Sans",system-ui,-apple-system,sans-serif;text-align:center;' +
-    'opacity:0;animation:amLimiteIn .45s ease forwards}' +
-    '@keyframes amLimiteIn{to{opacity:1}}' +
+    fondo + ';color:#F4EEDD;font:16px/1.55 "Work Sans",system-ui,-apple-system,sans-serif;text-align:center}' +
+    /* El fondo NO se anima: si el popup entra con opacity 0 se transparenta la web
+       de fondo durante el primer medio segundo. La animacion va solo en el
+       contenido, que ya esta sobre el fondo opaco. */
     '.am-limite-box{margin:auto;width:100%;max-width:640px;animation:amLimiteUp .5s .08s cubic-bezier(.2,.7,.2,1) both}' +
     '@keyframes amLimiteUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}' +
     '.am-limite-badge{display:inline-block;font:600 12px/1 "Space Mono",ui-monospace,monospace;letter-spacing:.14em;' +
