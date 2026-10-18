@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prueba de Turnstile | AndreuMatic</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="css/styles.css?v=1.47">
+</head>
+<body style="background:#0F2E29;color:#F4EEDD;padding:40px 20px;font:16px/1.6 'Work Sans',system-ui,sans-serif">
+<div style="max-width:620px;margin:0 auto">
+<h1 style="font-size:26px;margin:0 0 10px">Prueba de Cloudflare Turnstile</h1>
+<p style="opacity:.8">Si aquí la casilla aparece y funciona, el problema está en el aviso (que mueve el formulario). Si aquí tampoco aparece, el problema es el sitekey o tu navegador.</p>
+
+<h2 style="font-size:18px;margin-top:32px">1. Render automático (data-sitekey)</h2>
+<div class="cf-turnstile" data-sitekey="0x4AAAAAAFAMDovL1wsCHCgN" data-theme="auto" data-size="flexible" style="min-height:65px;margin-bottom:24px"></div>
+
+<h2 style="font-size:18px">2. Render explícito</h2>
+<div id="manual" class="cf-turnstile" data-am-sitekey="0x4AAAAAAFAMDovL1wsCHCgN" data-am-theme="auto" data-am-size="flexible" style="min-height:65px;margin-bottom:24px"></div>
+
+<p id="estado" style="background:rgba(255,255,255,.08);padding:14px;border-radius:10px;font-family:monospace;font-size:13px;white-space:pre-wrap">cargando…</p>
+<p style="opacity:.6;font-size:13px">Página de diagnóstico. Se puede borrar sin dejar rastro.</p>
+</div>
+
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script>
+(function () {
+  var salida = document.getElementById('estado');
+  var lineas = [];
+  function anotar(t) { lineas.push(t); salida.textContent = lineas.join('\n'); }
+  function estado(titulo, cont) {
+    var iframes = cont.querySelectorAll('iframe').length;
+    var token = '';
+    try { token = (window.turnstile ? (window.turnstile.getResponse(cont) || '(vacio)') : 'sin api'); } catch (e) { token = 'error: ' + e.message; }
+    anotar(titulo + '\n  iframe: ' + iframes + '\n  token: ' + token);
+  }
+  function manual() {
+    var c = document.getElementById('manual');
+    if (!window.turnstile) { anotar('2. explicito -> la API de Turnstile no cargo'); return; }
+    try {
+      window.turnstile.render(c, { sitekey: '0x4AAAAAAFAMDovL1wsCHCgN', theme: 'auto', size: 'flexible' });
+      estado('2. explicito -> montado');
+    } catch (e) { anotar('2. explicito -> ERROR: ' + e.message); }
+  }
+  window.addEventListener('load', function () {
+    var auto = document.querySelector('[data-sitekey]');
+    if (!auto) { anotar('1. automatico -> no encontrado'); return; }
+    estado('1. automatico -> montado');
+    manual();
+    setTimeout(function () {
+      estado('1. automatico (a los 8s)');
+      estado('2. explicito (a los 8s)');
+      if (!document.querySelector('[data-sitekey] iframe')) {
+        anotar('\n>> Ninguno de los dos ha dibujado el iframe.');
+        anotar('>> Suele significar: sitekey sin este dominio, o el navegador esta');
+        anotar('>> bloqueando challenges.cloudflare.com (adblocker, privacidad, DNS).');
+      }
+    }, 8000);
+  });
+})();
+</script>
+</body>
+</html>
