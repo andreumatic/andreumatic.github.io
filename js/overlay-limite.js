@@ -1,26 +1,32 @@
-﻿/* AndreuMatic — overlay de límite operativo + formulario en popup (v3c)
+﻿/* AndreuMatic — aviso de límite operativo + formulario en popup (v3d)
    Superpone un aviso sobre la web SIN tocar su contenido.
    No modifica texto, meta, canonical, schema, sitemap ni robots:
    la indexación queda exactamente igual.
 
    - Al entrar: aviso a pantalla completa, opaco (la web NO se ve detrás).
+   - El aviso se muestra SIEMPRE: no se recuerda la visita (REVISAR_DIAS = 0).
+   - NO se puede cerrar: ni con Escape, ni con clic fuera, ni con "ver la web".
+     La unica salida es el boton "Escríbenos" (abre el formulario) o el
+     conmutador de idioma.
    - "Escríbenos": el formulario aparece dentro del mismo popup.
    - Entrar por index.html#contacto: el popup abre directamente con el formulario.
-   - El formulario es el de la propia página: se mueve al popup, no se duplica
+   - El formulario es el de la propia pagina: se mueve al popup, no se duplica
      (asi hay un solo widget de Turnstile y un solo envio).
+   - El conmutador ES/VA va dentro del popup: al tapar la web, el selector de la
+     cabecera queda inalcanzable.
 
    Configuracion:
-     window.AM_LIMITE.ACTIVO           activa o desactiva todo
-     window.AM_LIMITE.REVISAR_DIAS     cada cuanto se recuerda (0 = no recordar)
-     window.AM_LIMITE.FONDO_TRANSLUCIDO  deja ver la web detras (false = opaco)
-     window.AM_LIMITE.CERRABLE_PULSANDO_FONDO  cerrar con clic fuera (true por defecto)
+     window.AM_LIMITE.ACTIVO                    activa o desactiva todo
+     window.AM_LIMITE.REVISAR_DIAS              0 = mostrar siempre (por defecto)
+     window.AM_LIMITE.FONDO_TRANSLUCIDO         deja ver la web detras
+     window.AM_LIMITE.CERRABLE_PULSANDO_FONDO   cerrar con clic fuera (false)
 */
 window.AM_LIMITE = {
   ACTIVO: true,
-  REVISAR_DIAS: 30,
+  REVISAR_DIAS: 0,
   CLAVE: 'am-limite-operativo',
   FONDO_TRANSLUCIDO: false,
-  CERRABLE_PULSANDO_FONDO: true
+  CERRABLE_PULSANDO_FONDO: false
 };
 
 (function () {
@@ -49,7 +55,9 @@ window.AM_LIMITE = {
   var lang = (function () { try { return localStorage.getItem('am-lang') === 'va' ? 'va' : 'es'; } catch (e) { return 'es'; } })();
   var t = T[lang] || T.es;
 
-  /* ¿Hace falta mostrarlo? (salvo que entremos por el ancla del formulario) */
+  /* ¿Hace falta mostrarlo? Solo se oculta si alguien lo vio hace poco
+     (REVISAR_DIAS > 0). Con 0 se muestra siempre. Entrar por el ancla del
+     formulario cuenta como querer el formulario: se muestra igualmente. */
   var porAnclaFormulario = (location.hash || '').toLowerCase() === '#contacto';
   if (!porAnclaFormulario && cfg.REVISAR_DIAS > 0) {
     try {
@@ -81,6 +89,13 @@ window.AM_LIMITE = {
     'font-family:inherit;font-weight:700;font-size:15.5px;background:#E8A33D;color:#0F2E29;border:2px solid #E8A33D}' +
     '.am-limite-btn:focus-visible{outline:3px solid #8FD9C4;outline-offset:3px}' +
     '.am-limite-foot{margin:24px 0 0;font:400 11.5px/1.4 "Space Mono",ui-monospace,monospace;color:rgba(244,238,223,.45)}' +
+    /* conmutador de idioma: la cabecera de la web queda tapada por el popup */
+    '.am-limite-lang{margin-top:16px}' +
+    '.am-limite-lang button{background:none;border:1px solid rgba(244,238,223,.28);color:rgba(244,238,223,.6);' +
+    'border-radius:999px;padding:5px 13px;margin:0 4px;font:600 12px/1 "Space Mono",ui-monospace,monospace;' +
+    'letter-spacing:.08em;cursor:pointer}' +
+    '.am-limite-lang button[aria-pressed="true"]{border-color:#E8A33D;color:#E8A33D}' +
+    '.am-limite-lang button:focus-visible{outline:2px solid #8FD9C4;outline-offset:2px}' +
     /* formulario de la propia web, alojado en el popup */
     '.am-limite-formwrap{max-width:560px;margin:22px auto 0;text-align:left}' +
     '.am-limite .form-card{margin:0;max-width:100%;box-shadow:0 22px 60px rgba(0,0,0,.45)}' +
@@ -116,6 +131,10 @@ window.AM_LIMITE = {
     '<p class="am-limite-foot">' + t.foot + '</p>' +
     '</div>' +
     '<div class="am-limite-formwrap" hidden></div>' +
+    '<div class="am-limite-lang" role="group" aria-label="Idioma / Llengua">' +
+    '<button type="button" data-lang="es" aria-pressed="' + (lang === 'es') + '">ES</button>' +
+    '<button type="button" data-lang="va" aria-pressed="' + (lang === 'va') + '">VA</button>' +
+    '</div>' +
     '</div>';
   document.body.appendChild(el);
 
@@ -136,49 +155,33 @@ window.AM_LIMITE = {
     form.classList.add('am-limite-form');
     var primero = form.querySelector('input:not([type="hidden"]), select, textarea');
     if (primero) { try { primero.focus({ preventScroll: true }); } catch (e) { primero.focus(); } }
-    guardar();
   }
 
-  function guardar() {
+  function recordar() {
+    if (cfg.REVISAR_DIAS <= 0) return;   /* 0 = no recordar nada */
     try { localStorage.setItem(cfg.CLAVE, String(Date.now())); } catch (e) { }
   }
 
   var btn = el.querySelector('.am-limite-btn');
   if (btn && btn.tagName === 'BUTTON') btn.addEventListener('click', mostrarFormulario);
 
-  function cerrar() {
-    if (!document.body.contains(el)) return;
-    el.style.transition = 'opacity .25s ease';
-    el.style.opacity = '0';
-    document.documentElement.style.overflow = '';
-    document.body.style.overflow = '';
-    setTimeout(function () {
-      if (el.parentNode) el.parentNode.removeChild(el);
-      if (form && form.parentNode === host) document.body.appendChild(form);
-      window.scrollTo(0, scrollPrevio);
-    }, 260);
-    guardar();
-  }
+  /* El aviso NO se cierra. Solo queda el boton y el conmutador de idioma.
+     (Sin Escape, sin clic fuera, sin "ver la web".) */
 
-  /* Cerrar con clic en la zona oscura. El cierre se decide por el elemento exacto
-     pulsado, no por "fuera del popup": al abrir el formulario el boton desaparece
-     del DOM, y una comprobacion contains() daria false y cerraria el popup. */
-  if (cfg.CERRABLE_PULSANDO_FONDO) {
-    el.addEventListener('click', function (e) {
-      if (e.target === el) cerrar();
+  /* Conmutador ES/VA propio: el de la cabecera queda bajo el popup */
+  Array.prototype.forEach.call(el.querySelectorAll('.am-limite-lang button'), function (b) {
+    b.addEventListener('click', function () {
+      try { localStorage.setItem('am-lang', b.getAttribute('data-lang')); } catch (e) { }
+      location.reload();
     });
-  }
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') cerrar();
   });
 
-  /* Si han cambiado de idioma con el selector, el aviso se refresca */
+  /* Si cambian de idioma con el selector de la cabecera (por teclado, p. ej.),
+     el aviso se refresca en el nuevo idioma. */
   var sel = document.getElementById('lang-select');
-  if (sel) sel.addEventListener('change', function () {
-    try { localStorage.removeItem(cfg.CLAVE); } catch (e) { }
-    cerrar();
-  });
+  if (sel) sel.addEventListener('change', function () { location.reload(); });
 
   /* Entrada directa al formulario: popup con el formulario, sin mensaje */
   if (porAnclaFormulario && form) mostrarFormulario();
+  recordar();
 })();
