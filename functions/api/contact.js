@@ -88,18 +88,27 @@ export async function onRequestPost({ request, env }) {
   }
 
   // 3) Turnstile
+  // El formulario es el UNICO canal de contacto de la web: si el widget va lento
+  // o no carga (red, bloqueador, navegador raro), rechazar el envio deja al
+  // visitante sin ninguna via de contacto. Por eso, si no llega token, se acepta
+  // el mensaje y se avisa en los logs. Las otras tres capas (honeypot, trampa de
+  // tiempo y rate-limit) siguen activas.
   const secret = env.TURNSTILE_SECRET_KEY;
   const token = String(body['cf-turnstile-response'] || '');
-  if (secret) {
-    if (!token) {
-      return j({ ok: false, message: 'Verifica que no eres un robot e inténtalo de nuevo.' }, 400);
-    }
+  let sinToken = false;
+  if (secret && !token) {
+    sinToken = true;
+    console.warn(JSON.stringify({ evento: 'contacto-sin-token-turnstile', ts: new Date().toISOString() }));
+  } else if (secret && token) {
     try {
       const ok = await verifyTurnstile(token, secret, ip);
-      if (!ok) return json({ ok: false, message: 'Verificación anti-spam fallida.' }, 403);
+      if (!ok) {
+        console.warn(JSON.stringify({ evento: 'turnstile-rechazado', ts: new Date().toISOString() }));
+        sinToken = true; // tampoco bloqueamos: mismo criterio que sin token
+      }
     } catch (e) {
       console.error('Turnstile error:', e);
-      return j({ ok: false, message: 'No se pudo verificar la solicitud.' }, 500);
+      sinToken = true; // la verificacion caida no puede dejar el canal muerto
     }
   }
 
@@ -189,7 +198,7 @@ export async function onRequestPost({ request, env }) {
       console.error('Resend error:', res.status, err);
       return j({ ok: false, message: 'No se pudo enviar la solicitud.' }, 502);
     }
-    return j({ ok: true, message: 'Solicitud enviada correctamente.', delivery: 'email-enviado' });
+    return j({ ok: true, message: 'Solicitud enviada correctamente.', delivery: sinToken ? 'email-enviado-sin-turnstile' : 'email-enviado' });
   } catch (e) {
     console.error('Contact error:', e);
     return j({ ok: false, message: 'No se pudo enviar la solicitud.' }, 500);

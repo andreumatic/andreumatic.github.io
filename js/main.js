@@ -65,10 +65,38 @@
     if(submitButton){submitButton.disabled=true;submitButton.textContent=T('f.sending','Enviando...');}
     hideMsg();
     var fetchFailed=false;
-    /* Turnstile token (si el widget está configurado; si no hay sitekey, va vacío y el server lo gestiona) */
-    var tsToken='';
-    try{tsToken=(window.turnstile&&f.querySelector('.cf-turnstile'))?window.turnstile.getResponse():'';}catch(_){tsToken='';}
-    fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nombre:n,telefono:t,email:em,servicio:sv,mensaje:m,canal:c,empresa:hp,ts:tsToken?undefined:ts,'cf-turnstile-response':tsToken})})
+    /* Turnstile: el widget puede ir todavia cargando cuando se pulsa enviar.
+       Antes de dar por bueno el envio, esperamos a que llegue el token (max 10s).
+       Si no llega, se envia igualmente: el backend acepta los envios sin token
+       (honeypot + trampa de tiempo + limite de peticiones siguen activos). */
+    var leerToken=function(){
+      try{
+        var w=f.querySelector('.cf-turnstile');
+        if(!w||!window.turnstile)return '';
+        var t=window.turnstile.getResponse(w)||'';
+        if(!t){var h=w.querySelector('input[name="cf-turnstile-response"]');t=(h&&h.value)||'';}
+        return t||'';
+      }catch(_){return '';}
+    };
+    var esperarToken=function(){
+      return new Promise(function(resolve){
+        var t0=Date.now();
+        var paso=function(){
+          var tok=leerToken();
+          if(tok){resolve(tok);return;}
+          if(Date.now()-t0>10000){resolve('');return;}
+          setTimeout(paso,350);
+        };
+        paso();
+      });
+    };
+    var tsToken=leerToken();
+    if(!tsToken&&submitButton){submitButton.textContent=T('f.checking','Verificando...');}
+    var promesaEnvio=(tsToken?Promise.resolve(tsToken):esperarToken()).then(function(tok){
+      if(submitButton){submitButton.textContent=T('f.sending','Enviando...');}
+      return fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nombre:n,telefono:t,email:em,servicio:sv,mensaje:m,canal:c,empresa:hp,ts:tok?undefined:ts,'cf-turnstile-response':tok})});
+    });
+    promesaEnvio
       .then(function(r){return r.json().then(function(j){return {ok:r.ok,status:r.status,json:j};});},function(){fetchFailed=true;throw new Error('red');})
       .then(function(result){
         if(!result.ok || !result.json.ok){
