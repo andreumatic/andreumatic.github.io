@@ -46,17 +46,15 @@ window.AM_LIMITE = {
       badge: 'AndreuMatic · límite operativo',
       h: 'Seguimos trabajando. Con un límite.',
       p: 'Por el momento <b>no aceptamos nuevas contrataciones ni servicios nuevos</b>. Los clientes que ya estaban con nosotros siguen atendidos por sus canales habituales.',
-      p2: 'Si te has equivocado de sitio, escríbenos y te derivamos.',
-      cta: 'Escríbenos',
-      foot: 'Aviso superpuesto a la web. El contenido no ha cambiado.'
+      p2: 'Escríbenos y te derivamos si lo necesitas.',
+      cta: 'Escríbenos'
     },
     va: {
       badge: 'AndreuMatic · límit operatiu',
       h: 'Continuem treballant. Amb un límit.',
       p: 'De moment <b>no acceptem noves contractacions ni serveis nous</b>. Els clients que ja hi eren amb nosaltres segueixen atesos pels seus canals habituals.',
-      p2: 'Si t\'has equivocat de lloc, escriu-nos i et derivem.',
-      cta: 'Escriu-nos',
-      foot: 'Avís superposat al web. El contingut no ha canviat.'
+      p2: 'Escriu-nos i et derivem si ho necessites.',
+      cta: 'Escriu-nos'
     }
   };
 
@@ -90,6 +88,8 @@ window.AM_LIMITE = {
     '@keyframes amLimiteUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}' +
     '.am-limite-badge{display:inline-block;font:600 12px/1 "Space Mono",ui-monospace,monospace;letter-spacing:.14em;' +
     'text-transform:uppercase;color:#E8A33D;border:1px solid rgba(232,163,61,.45);border-radius:999px;padding:8px 14px;margin-bottom:20px}' +
+    /* logo de marca encima del aviso */
+    '.am-limite-logo{display:block;width:72px;height:72px;margin:0 auto 18px;object-fit:contain}' +
     '.am-limite h1{margin:0 0 16px;font-size:clamp(26px,4.6vw,40px);line-height:1.15;color:#F4EEDD;font-weight:800}' +
     '.am-limite h1 b,.am-limite p b{color:#E8A33D}' +
     '.am-limite p{margin:0 0 12px;font-size:16.5px;color:#E9E4D6}' +
@@ -126,6 +126,7 @@ window.AM_LIMITE = {
   el.innerHTML =
     '<div class="am-limite-box">' +
     '<div class="am-limite-cab">' +
+    '<img class="am-limite-logo" src="assets/icono-firma.png" alt="AndreuMatic" width="72" height="72">' +
     '<span class="am-limite-badge">' + t.badge + '</span>' +
     '<h1>' + t.h + '</h1>' +
     '</div>' +
@@ -137,7 +138,6 @@ window.AM_LIMITE = {
       ? '<button type="button" class="am-limite-btn">' + t.cta + '</button>'
       : '<a class="am-limite-btn" href="index.html#contacto">' + t.cta + '</a>') +
     '</div>' +
-    '<p class="am-limite-foot">' + t.foot + '</p>' +
     '</div>' +
     '<div class="am-limite-formwrap" hidden></div>' +
     '<div class="am-limite-lang" role="group" aria-label="Idioma / Llengua">' +
