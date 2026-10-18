@@ -475,3 +475,13 @@ a.huecos{text-decoration:none;cursor:pointer}
 .form-card.sent label,.form-card.sent .cf-turnstile,.form-card.sent button[type="submit"]{display:none}
 .form-card label[hidden]{display:none}
 .form-card.sent .form-msg{margin-top:4px;font-size:15px}
+
+/* --- Anti-parpadeo del aviso de limite operativo ---
+   El aviso se monta con un script al final del <body>: sin esto, el navegador
+   pinta la web entera un instante antes de que aparezca el popup.
+   Ocultamos desde el primer pintado (esta hoja es render-blocking) y revelamos
+   en cuanto el script monta el aviso.
+   Red de seguridad: si el script no carga (bloqueador, JS desactivado, error),
+   la animacion revela la web igualmente a los 1 s. Nunca queda en blanco. */
+body{visibility:hidden;animation:amRevisar .1s 1s forwards}
+@keyframes amRevisar{to{visibility:visible}}

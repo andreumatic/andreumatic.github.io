@@ -31,6 +31,14 @@ window.AM_LIMITE = {
 
 (function () {
   var cfg = window.AM_LIMITE;
+  /* Anti-parpadeo: la hoja de estilos oculta el body hasta que el aviso esta
+     montado. En cuanto este script corre, revelamos (el popup es opaco y lo
+     tapa). Si este script NO llegara a cargarse, la animacion de la CSS
+     revela la web a los 1 s por su cuenta. */
+  function revelar() {
+    try { document.body.style.animation = 'none'; document.body.style.visibility = 'visible'; } catch (e) { }
+  }
+  revelar();
   if (!cfg || !cfg.ACTIVO) return;
 
   var T = {
@@ -155,6 +163,34 @@ window.AM_LIMITE = {
     form.classList.add('am-limite-form');
     var primero = form.querySelector('input:not([type="hidden"]), select, textarea');
     if (primero) { try { primero.focus({ preventScroll: true }); } catch (e) { primero.focus(); } }
+    montarTurnstile();
+  }
+
+  /* Turnstile: se renderiza a mano y DESPUES de colocar el formulario en su
+     sitio definitivo. Con el render automatico (data-sitekey) el widget se
+     dibujaba en la pagina y al mover el <form> se quedaba roto (caja oscura
+     sin casilla y sin token). Aqui se dibuja ya en su sitio final.
+     Si el script de Turnstile aun no ha cargado, se espera a 'load'. */
+  function montarTurnstile() {
+    if (!form) return;
+    var w = form.querySelector('.cf-turnstile');
+    if (!w || w.getAttribute('data-am-rendered')) return;
+    var sitekey = w.getAttribute('data-am-sitekey');
+    if (!sitekey) return;
+    var dibujar = function () {
+      if (!window.turnstile) return;   /* si no llega, el envio funciona igual */
+      if (w.getAttribute('data-am-rendered')) return;
+      try {
+        w.setAttribute('data-am-rendered', '1');
+        window.turnstile.render(w, {
+          sitekey: sitekey,
+          theme: w.getAttribute('data-am-theme') || 'auto',
+          size: w.getAttribute('data-am-size') || 'flexible'
+        });
+      } catch (e) { w.removeAttribute('data-am-rendered'); console.warn('Turnstile no se pudo montar:', e); }
+    };
+    if (window.turnstile) dibujar();
+    else window.addEventListener('load', dibujar, { once: true });
   }
 
   function recordar() {
