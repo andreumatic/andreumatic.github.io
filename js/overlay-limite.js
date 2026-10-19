@@ -43,14 +43,14 @@ window.AM_LIMITE = {
 
   var T = {
     es: {
-      badge: 'AndreuMatic · límite operativo',
+      badge: 'límite operativo',
       h: 'Seguimos trabajando. Con un límite.',
       p: 'Por el momento <b>no aceptamos nuevas contrataciones ni servicios nuevos</b>. Los clientes que ya estaban con nosotros siguen atendidos por sus canales habituales.',
       p2: 'Escríbenos y te derivamos si lo necesitas.',
       cta: 'Escríbenos'
     },
     va: {
-      badge: 'AndreuMatic · límit operatiu',
+      badge: 'límit operatiu',
       h: 'Continuem treballant. Amb un límit.',
       p: 'De moment <b>no acceptem noves contractacions ni serveis nous</b>. Els clients que ja hi eren amb nosaltres segueixen atesos pels seus canals habituals.',
       p2: 'Escriu-nos i et derivem si ho necessites.',
